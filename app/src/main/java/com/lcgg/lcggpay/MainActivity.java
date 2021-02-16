@@ -1,7 +1,11 @@
 package com.lcgg.lcggpay;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
+import com.amplifyframework.auth.AuthProvider;
+import com.amplifyframework.core.Amplify;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,28 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        login();
+    }
+
+    private void login() {
+        Amplify.Auth.signInWithSocialWebUI(
+                AuthProvider.amazon(),
+                this,
+                result -> {
+                    Log.i(TAG, "AuthQuickstart RESULT " + result.toString());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                },
+                error -> {
+                    Log.e(TAG, "AuthQuickstart ERROR " + error.toString());
+                }
+        );
+
     }
 
 }
