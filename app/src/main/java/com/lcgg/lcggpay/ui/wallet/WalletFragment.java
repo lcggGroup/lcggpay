@@ -17,15 +17,15 @@ import com.lcgg.lcggpay.ui.pay.PayViewModel;
 
 public class WalletFragment extends Fragment {
 
-    private PayViewModel payViewModel;
+    private WalletViewModel walletViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        payViewModel =
-                new ViewModelProvider(this).get(PayViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_pay, container, false);
-        final TextView textView = root.findViewById(R.id.text_pay);
-        payViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        walletViewModel =
+                new ViewModelProvider(this).get(WalletViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_wallet, container, false);
+        final TextView textView = root.findViewById(R.id.text_wallet);
+        walletViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
