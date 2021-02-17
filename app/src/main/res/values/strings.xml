@@ -3,5 +3,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_pay">Pay</string>
+    <string name="title_pay">Scan to Pay</string>
+    <string name="title_store">Store</string>
 </resources>
