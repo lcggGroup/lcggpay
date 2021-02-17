@@ -23,8 +23,8 @@ public class PayFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         payViewModel =
                 new ViewModelProvider(this).get(PayViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        final TextView textView = root.findViewById(R.id.text_dashboard);
+        View root = inflater.inflate(R.layout.fragment_pay, container, false);
+        final TextView textView = root.findViewById(R.id.text_pay);
         payViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
