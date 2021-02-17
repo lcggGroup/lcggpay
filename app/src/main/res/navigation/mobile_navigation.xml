@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.lcgg.lcggpay.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_pay"
+        android:name="com.lcgg.lcggpay.ui.pay.PayFragment"
+        android:label="@string/title_pay"
+        tools:layout="@layout/fragment_pay" />
 
     <fragment
         android:id="@+id/navigation_notifications"
