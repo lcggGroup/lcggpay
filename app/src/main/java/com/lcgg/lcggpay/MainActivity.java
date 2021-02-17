@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
                 Analytics.class, Crashes.class);
 
-        login();
+        //login();
 
     }
 
