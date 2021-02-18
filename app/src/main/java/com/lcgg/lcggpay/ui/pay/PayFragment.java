@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +30,9 @@ public class PayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
-        IntentIntegrator intentIntegrator = new IntentIntegrator(this.getActivity());
+         ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
+        IntentIntegrator intentIntegrator = IntentIntegrator.forSupportFragment(PayFragment.this);
+        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         intentIntegrator.initiateScan();
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
@@ -42,17 +44,13 @@ public class PayFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        IntentResult intentResult =IntentIntegrator.parseActivityResult(requestCode,resultCode, data);
-
-        if (intentResult != null){
-            if (intentResult.getContents() == null){
-                textView.setText("Cancelled");
-            }
-            else {
-                textView.setText(intentResult.getContents());
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getContext(), "Scanned : " + result.getContents(), Toast.LENGTH_LONG).show();
             }
         }
-
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
