@@ -4,11 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import com.amplifyframework.auth.AuthProvider;
-import com.amplifyframework.core.Amplify;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -48,26 +44,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void login() {
-        Amplify.Auth.signInWithSocialWebUI(
-                AuthProvider.amazon(),
-                this,
-                result -> {
-                    Log.i(TAG, "AuthQuickstart RESULT " + result.toString());
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    });
-                },
-                error -> {
-                    Log.e(TAG, "AuthQuickstart ERROR " + error.toString());
-                }
-        );
-
     }
 
 }

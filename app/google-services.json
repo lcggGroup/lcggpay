@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "940421698999",
+    "project_id": "lcgg-pay",
+    "storage_bucket": "lcgg-pay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940421698999:android:2a132079809a79045ac432",
+        "android_client_info": {
+          "package_name": "com.lcgg.lcggpay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "940421698999-cgk1gnthkpgko66d1fpvo9idq27b6ii6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfPzcZh161K9-q_QAoMD5g1rVaO10XCXk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "940421698999-cgk1gnthkpgko66d1fpvo9idq27b6ii6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
