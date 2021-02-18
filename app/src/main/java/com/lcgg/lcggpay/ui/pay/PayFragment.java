@@ -24,7 +24,6 @@ import com.lcgg.lcggpay.ui.dashboard.DashboardViewModel;
 
 public class PayFragment extends Fragment {
 
-    private PayViewModel payViewModel;
     private TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -32,6 +31,7 @@ public class PayFragment extends Fragment {
 
          ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
         IntentIntegrator intentIntegrator = IntentIntegrator.forSupportFragment(PayFragment.this);
+        intentIntegrator.setPrompt("Scan QR Code");
         intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         intentIntegrator.initiateScan();
 

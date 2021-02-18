@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.lcgg.lcggpay.R;
-import com.lcgg.lcggpay.ui.pay.PayViewModel;
 
 public class StoreFragment extends Fragment {
 
