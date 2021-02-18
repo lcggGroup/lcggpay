@@ -49,7 +49,7 @@ public class PayFragment extends Fragment {
         if(result != null) {
             if (result.getContents() == null) {
                 //textView.setText("Cancelled");
-                getChildFragmentManager().beginTransaction()
+                getFragmentManager().beginTransaction()
                         .replace(R.id.nav_host_fragment, new HomeFragment())
                         .commit();
             } else {
