@@ -37,12 +37,7 @@ public class PayFragment extends Fragment {
                 new ViewModelProvider(this).get(PayViewModel.class);
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
         textView = root.findViewById(R.id.text_pay);
-        payViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        
         return root;
     }
 
