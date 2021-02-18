@@ -33,8 +33,6 @@ public class PayFragment extends Fragment {
         IntentIntegrator intentIntegrator = new IntentIntegrator(this.getActivity());
         intentIntegrator.initiateScan();
 
-        payViewModel =
-                new ViewModelProvider(this).get(PayViewModel.class);
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
         textView = root.findViewById(R.id.text_pay);
         
@@ -47,7 +45,7 @@ public class PayFragment extends Fragment {
         IntentResult intentResult =IntentIntegrator.parseActivityResult(requestCode,resultCode, data);
 
         if (intentResult != null){
-            if (intentResult.getContents() != null){
+            if (intentResult.getContents() == null){
                 textView.setText("Cancelled");
             }
             else {
