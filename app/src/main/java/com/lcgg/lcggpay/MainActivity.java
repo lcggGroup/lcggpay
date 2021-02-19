@@ -37,12 +37,16 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
                         navController.navigate(R.id.navigation_home);
+                        break;
                     case R.id.navigation_pay:
                         navController.navigate(R.id.navigation_pay);
+                        break;
                     case R.id.navigation_store:
                         navController.navigate(R.id.navigation_store);
+                        break;
                     case R.id.navigation_wallet:
                         navController.navigate(R.id.navigation_wallet);
+                        break;
                 }
                 return true;
             }
