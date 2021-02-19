@@ -37,15 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
                         navController.navigate(R.id.navigation_home);
+                        item.setChecked(true);
                         break;
                     case R.id.navigation_pay:
                         navController.navigate(R.id.navigation_pay);
+                        item.setChecked(true);
                         break;
                     case R.id.navigation_store:
                         navController.navigate(R.id.navigation_store);
+                        item.setChecked(true);
                         break;
                     case R.id.navigation_wallet:
                         navController.navigate(R.id.navigation_wallet);
+                        item.setChecked(true);
                         break;
                 }
                 return true;
@@ -63,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 Analytics.class, Crashes.class);
 
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
