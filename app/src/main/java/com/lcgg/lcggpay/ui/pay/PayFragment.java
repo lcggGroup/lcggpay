@@ -22,6 +22,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.R;
+import com.lcgg.lcggpay.confirmation.AcceptedFragment;
+import com.lcgg.lcggpay.confirmation.CancelFragment;
 import com.lcgg.lcggpay.ui.dashboard.DashboardViewModel;
 import com.lcgg.lcggpay.ui.home.HomeFragment;
 
@@ -32,7 +34,7 @@ public class PayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-         ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
+        ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CAMERA}, PackageManager.PERMISSION_GRANTED);
         IntentIntegrator intentIntegrator = IntentIntegrator.forSupportFragment(PayFragment.this);
         intentIntegrator.setPrompt("");
         intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
@@ -50,12 +52,14 @@ public class PayFragment extends Fragment {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if (result.getContents() == null) {
-                //textView.setText("Cancelled");
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, new HomeFragment())
+                        .replace(R.id.nav_host_fragment, new CancelFragment())
                         .commit();
             } else {
-                textView.setText(result.getContents());
+                String msg = result.getContents();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.nav_host_fragment, new AcceptedFragment(msg))
+                        .commit();
             }
         }
     }
