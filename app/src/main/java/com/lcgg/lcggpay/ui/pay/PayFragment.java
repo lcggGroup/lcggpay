@@ -24,7 +24,6 @@ import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.confirmation.AcceptedFragment;
 import com.lcgg.lcggpay.confirmation.CancelFragment;
-import com.lcgg.lcggpay.ui.dashboard.DashboardViewModel;
 import com.lcgg.lcggpay.ui.home.HomeFragment;
 
 public class PayFragment extends Fragment {
