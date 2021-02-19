@@ -34,24 +34,9 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.navigation_home:
-                        navController.navigate(R.id.navigation_home);
-                        navView.setSelectedItemId(item.getItemId());
-                        break;
-                    case R.id.navigation_pay:
-                        navController.navigate(R.id.navigation_pay);
-                        navView.setSelectedItemId(item.getItemId());
-                        break;
-                    case R.id.navigation_store:
-                        navController.navigate(R.id.navigation_store);
-                        navView.setSelectedItemId(item.getItemId());
-                        break;
-                    case R.id.navigation_wallet:
-                        navController.navigate(R.id.navigation_wallet);
-                        navView.setSelectedItemId(item.getItemId());
-                        break;
-                }
+                Menu menu = navView.getMenu();
+                menu.findItem(item.getItemId()).setChecked(true);
+
                 return true;
             }
         });
