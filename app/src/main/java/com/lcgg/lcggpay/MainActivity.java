@@ -37,19 +37,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
                         navController.navigate(R.id.navigation_home);
-                        item.setChecked(true);
+                        navView.setSelectedItemId(item.getItemId());
                         break;
                     case R.id.navigation_pay:
                         navController.navigate(R.id.navigation_pay);
-                        item.setChecked(true);
+                        navView.setSelectedItemId(item.getItemId());
                         break;
                     case R.id.navigation_store:
                         navController.navigate(R.id.navigation_store);
-                        item.setChecked(true);
+                        navView.setSelectedItemId(item.getItemId());
                         break;
                     case R.id.navigation_wallet:
                         navController.navigate(R.id.navigation_wallet);
-                        item.setChecked(true);
+                        navView.setSelectedItemId(item.getItemId());
                         break;
                 }
                 return true;
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_pay, R.id.navigation_store, R.id.navigation_wallet)
                 .build();
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
