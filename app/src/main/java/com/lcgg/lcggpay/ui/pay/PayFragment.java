@@ -48,36 +48,26 @@ public class PayFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
         textView = root.findViewById(R.id.text_pay);
 
-        String amount = "15";
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD",
-                "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent intent = new Intent(getContext(), PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
-        
         return root;
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
-            if (resultCode == RESULT_OK){
-                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (confirmation != null){
-                    try {
-                        String paymentDetails = confirmation.toJSONObject().toString(4);
-                        startActivity(new Intent(getContext(), AcceptedActivity.class)
-                                .putExtra("Payment Details",paymentDetails)
-                                .putExtra("Amount", "15"));
-                    } catch (JSONException e){
-                        e.printStackTrace();
-                    }
-                }
-            } else if (resultCode == Activity.RESULT_CANCELED)
-                Toast.makeText(getContext(), "Cancel", Toast.LENGTH_SHORT).show();
-        } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-            Toast.makeText(getContext(), "Invalid", Toast.LENGTH_SHORT).show();
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if (result.getContents() == null) {
+                //Cancel Scan
+            }
+            else {
+                String amount = "15";
+                PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD",
+                        "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
+                Intent intent = new Intent(getContext(), AcceptedActivity.class);
+                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
+                intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+                startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+            }
+        }
     }
 }

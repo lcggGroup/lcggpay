@@ -65,6 +65,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
+            if (resultCode == RESULT_OK){
+                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (confirmation != null){
+                    try {
+                        String paymentDetails = confirmation.toJSONObject().toString(4);
+                        startActivity(new Intent(this, AcceptedActivity.class)
+                                .putExtra("Payment Details",paymentDetails)
+                                .putExtra("Amount", "15"));
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED)
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+            Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
 
     }
 }
