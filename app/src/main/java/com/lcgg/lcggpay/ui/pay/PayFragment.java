@@ -35,6 +35,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class PayFragment extends Fragment {
     private TextView textView;
+    private String amt;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +49,13 @@ public class PayFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
         textView = root.findViewById(R.id.text_pay);
 
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amt)),"USD",
+                "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
+        Intent intent = new Intent(getContext(), AcceptedActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+
         return root;
     }
 
@@ -60,16 +68,33 @@ public class PayFragment extends Fragment {
         if(result != null) {
             if (result.getContents() == null) {
                 //Cancel Scan
+                amt = "Cancelled";
             }
             else {
-                String amount = "15";
-                PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD",
-                        "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
-                Intent intent = new Intent(getContext(), AcceptedActivity.class);
-                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-                intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-                startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+                //Successful Scan
+                amt = "15";
             }
         }
+
+        if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
+            if (resultCode == RESULT_OK){
+                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (confirmation != null){
+                    try {
+                        String paymentDetails = confirmation.toJSONObject().toString(4);
+                        startActivity(new Intent(getActivity(), AcceptedActivity.class)
+                                .putExtra("Payment Details",paymentDetails)
+                                .putExtra("Amount", amt));
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+            else if (resultCode == Activity.RESULT_CANCELED)
+                Toast.makeText(getContext(), "Cancel", Toast.LENGTH_SHORT).show();
+        }
+        else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+            Toast.makeText(getContext(), "Invalid", Toast.LENGTH_SHORT).show();
+
     }
 }
