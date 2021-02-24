@@ -14,12 +14,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.lcgg.lcggpay.confirmation.AcceptedActivity;
+import com.lcgg.lcggpay.ui.pay.PayFragment;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -64,6 +66,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        PayFragment payFragment = new PayFragment();
+        if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
+            if (resultCode == RESULT_OK){
+                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if (confirmation != null){
+                    try {
+                        String paymentDetails = confirmation.toJSONObject().toString(4);
+                        startActivity(new Intent(this, AcceptedActivity.class)
+                                .putExtra("Payment Details",paymentDetails)
+                                .putExtra("Amount", payFragment.amt));
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+            else if (resultCode == Activity.RESULT_CANCELED)
+                Toast.makeText(this, "Cancel", Toast.LENGTH_SHORT).show();
+        }
+        else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+            Toast.makeText(this, "Invalid", Toast.LENGTH_SHORT).show();
 
     }
 }

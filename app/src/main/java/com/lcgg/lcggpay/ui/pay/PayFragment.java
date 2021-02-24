@@ -35,7 +35,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class PayFragment extends Fragment {
     private TextView textView;
-    private String amt;
+    public String amt;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -75,26 +75,6 @@ public class PayFragment extends Fragment {
                 amt = "15";
             }
         }
-
-        if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
-            if (resultCode == RESULT_OK){
-                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (confirmation != null){
-                    try {
-                        String paymentDetails = confirmation.toJSONObject().toString(4);
-                        startActivity(new Intent(getActivity(), AcceptedActivity.class)
-                                .putExtra("Payment Details",paymentDetails)
-                                .putExtra("Amount", amt));
-                    } catch (JSONException e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-            else if (resultCode == Activity.RESULT_CANCELED)
-                Toast.makeText(getContext(), "Cancel", Toast.LENGTH_SHORT).show();
-        }
-        else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-            Toast.makeText(getContext(), "Invalid", Toast.LENGTH_SHORT).show();
 
     }
 }
