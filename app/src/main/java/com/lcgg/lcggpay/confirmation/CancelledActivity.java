@@ -17,7 +17,6 @@ import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 
 public class CancelledActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
