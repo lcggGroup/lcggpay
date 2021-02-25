@@ -65,7 +65,6 @@ public class PayFragment extends Fragment {
                 intent.putExtra("amount","15");
                 intent.putExtra("URL", result.getContents());
                 //startActivityForResult(intent, );
-                Toast.makeText(getContext(), requestCode, Toast.LENGTH_SHORT).show();
                 REQUEST_CODE = requestCode;
             }
         }
