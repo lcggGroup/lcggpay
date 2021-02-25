@@ -1,4 +1,4 @@
-package com.lcgg.lcggpay;
+package com.lcgg.lcggpay.data.model;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 
