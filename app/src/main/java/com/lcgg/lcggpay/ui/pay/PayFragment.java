@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,13 +49,13 @@ public class PayFragment extends Fragment {
         if(result != null) {
             if (result.getContents() == null) {
                 //Cancel Scan
+                Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
             }
             else {
                 //Successful Scan
                 Intent intent = new Intent(getContext(), PaymentActivity.class);
                 intent.putExtra("amount","15");
-                startActivity(intent);
-
+                getActivity().startActivityForResult(intent, 111);
             }
         }
 
