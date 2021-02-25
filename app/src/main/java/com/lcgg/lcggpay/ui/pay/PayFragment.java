@@ -40,7 +40,10 @@ public class PayFragment extends Fragment {
         textView = root.findViewById(R.id.text_pay);
 
         intent = new Intent(getActivity(), PaymentActivity.class);
-        startActivityForResult(intent, REQUEST_CODE);
+        if (REQUEST_CODE != null){
+            startActivityForResult(intent, REQUEST_CODE);
+        }
+
 
         return root;
     }
