@@ -55,6 +55,7 @@ public class PayFragment extends Fragment {
                 //Successful Scan
                 Intent intent = new Intent(getActivity(), PaymentActivity.class);
                 intent.putExtra("amount","15");
+                intent.putExtra("URL", result.getContents());
                 startActivity(intent);
             }
         }
