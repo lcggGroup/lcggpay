@@ -23,6 +23,8 @@ import com.lcgg.lcggpay.confirmation.PaymentActivity;
 
 public class PayFragment extends Fragment {
     private TextView textView;
+    private Intent intent;
+    private Integer REQUEST_CODE;
     public String amt = "0";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -36,6 +38,9 @@ public class PayFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
         textView = root.findViewById(R.id.text_pay);
+
+        intent = new Intent(getActivity(), PaymentActivity.class);
+        startActivityForResult(intent, REQUEST_CODE);
 
         return root;
     }
@@ -54,10 +59,11 @@ public class PayFragment extends Fragment {
             else {
                 //Successful Scan
                 //Intent intent = new Intent(getActivity(), PaymentActivity.class);
-                //intent.putExtra("amount","15");
-                //intent.putExtra("URL", result.getContents());
+                intent.putExtra("amount","15");
+                intent.putExtra("URL", result.getContents());
                 //startActivityForResult(intent, );
                 Toast.makeText(getContext(), requestCode, Toast.LENGTH_SHORT).show();
+                REQUEST_CODE = requestCode;
             }
         }
         else {
