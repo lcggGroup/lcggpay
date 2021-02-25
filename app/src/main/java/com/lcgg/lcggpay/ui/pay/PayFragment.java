@@ -53,10 +53,11 @@ public class PayFragment extends Fragment {
             }
             else {
                 //Successful Scan
-                Intent intent = new Intent(getActivity(), PaymentActivity.class);
-                intent.putExtra("amount","15");
-                intent.putExtra("URL", result.getContents());
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), PaymentActivity.class);
+                //intent.putExtra("amount","15");
+                //intent.putExtra("URL", result.getContents());
+                //startActivityForResult(intent, );
+                Toast.makeText(getContext(), requestCode, Toast.LENGTH_SHORT).show();
             }
         }
         else {
