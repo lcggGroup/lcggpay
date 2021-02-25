@@ -53,10 +53,13 @@ public class PayFragment extends Fragment {
             }
             else {
                 //Successful Scan
-                Intent intent = new Intent(getContext(), PaymentActivity.class);
+                Intent intent = new Intent(getActivity(), PaymentActivity.class);
                 intent.putExtra("amount","15");
-                getContext().startActivity(intent);
+                startActivity(intent);
             }
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
 
     }
