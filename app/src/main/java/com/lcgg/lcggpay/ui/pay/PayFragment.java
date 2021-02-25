@@ -24,8 +24,6 @@ import com.lcgg.lcggpay.confirmation.PaymentActivity;
 public class PayFragment extends Fragment {
     private TextView textView;
     private Intent intent;
-    private Integer REQUEST_CODE;
-    public String amt = "0";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,13 +36,7 @@ public class PayFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
         textView = root.findViewById(R.id.text_pay);
-
         intent = new Intent(getActivity(), PaymentActivity.class);
-        if (REQUEST_CODE != null){
-            startActivityForResult(intent, REQUEST_CODE);
-        }
-
-
         return root;
     }
 
@@ -65,7 +57,7 @@ public class PayFragment extends Fragment {
                 intent.putExtra("amount","15");
                 intent.putExtra("URL", result.getContents());
                 //startActivityForResult(intent, );
-                REQUEST_CODE = requestCode;
+                startActivityForResult(intent, requestCode);
             }
         }
         else {
