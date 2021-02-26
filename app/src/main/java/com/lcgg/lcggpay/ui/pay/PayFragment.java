@@ -31,7 +31,8 @@ public class PayFragment extends Fragment {
     Button btnConfirm;
     Button btnCancel;
 
-    Intent intentPay;
+    String title;
+    String amount;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,12 +66,12 @@ public class PayFragment extends Fragment {
     }
 
     private void processPayment() {
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(intentPay.getStringExtra("amount"))),"USD",
-                intentPay.getStringExtra("URL"),PayPalPayment.PAYMENT_INTENT_SALE);
-        intentPay = new Intent(getContext(), AcceptedActivity.class);
-        intentPay.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-        intentPay.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(intentPay, PayPal.PAYPAL_REQUEST_CODE);
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(amount),"USD",
+                title, PayPalPayment.PAYMENT_INTENT_SALE);
+        Intent iPay = new Intent(getContext(), AcceptedActivity.class);
+        iPay.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
+        iPay.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+        startActivityForResult(iPay, PayPal.PAYPAL_REQUEST_CODE);
     }
 
     @Override
@@ -84,8 +85,8 @@ public class PayFragment extends Fragment {
             }
             else {
                 //Successful Scan
-                data.putExtra("amount","15");
-                data.putExtra("URL", result.getContents());
+                title = result.getContents();
+                amount = "15";
             }
         }
         else {
