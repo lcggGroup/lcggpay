@@ -67,7 +67,7 @@ public class PayFragment extends Fragment {
     private void processPayment() {
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(intentPay.getStringExtra("amount"))),"USD",
                 intentPay.getStringExtra("URL"),PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent intent = new Intent(getActivity(), AcceptedActivity.class);
+        Intent intent = new Intent(this.getActivity(), AcceptedActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
         startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
