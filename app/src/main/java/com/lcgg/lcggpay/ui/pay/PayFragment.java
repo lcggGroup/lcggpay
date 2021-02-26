@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +21,17 @@ import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.confirmation.AcceptedActivity;
 import com.lcgg.lcggpay.confirmation.PaymentActivity;
+import com.lcgg.lcggpay.data.model.PayPal;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+
+import java.math.BigDecimal;
 
 public class PayFragment extends Fragment {
-    private TextView textView;
-    private Intent intent;
+    Button btnConfirm;
+    Button btnCancel;
+
+    Intent intentPay;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,12 +43,35 @@ public class PayFragment extends Fragment {
         intentIntegrator.initiateScan();
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
-        textView = root.findViewById(R.id.text_pay);
-        intent = new Intent(getActivity(), PaymentActivity.class);
+
+        btnConfirm = root.findViewById(R.id.btn_confirm);
+        btnCancel = root.findViewById(R.id.btn_cancel);
+
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                processPayment();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return root;
     }
 
-
+    private void processPayment() {
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(intentPay.getStringExtra("amount"))),"USD",
+                intentPay.getStringExtra("URL"),PayPalPayment.PAYMENT_INTENT_SALE);
+        Intent intent = new Intent(getActivity(), AcceptedActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
+        intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -53,11 +84,8 @@ public class PayFragment extends Fragment {
             }
             else {
                 //Successful Scan
-                //Intent intent = new Intent(getActivity(), PaymentActivity.class);
-                intent.putExtra("amount","15");
-                intent.putExtra("URL", result.getContents());
-                //startActivityForResult(intent, );
-                startActivityForResult(intent, requestCode);
+                data.putExtra("amount","15");
+                data.putExtra("URL", result.getContents());
             }
         }
         else {

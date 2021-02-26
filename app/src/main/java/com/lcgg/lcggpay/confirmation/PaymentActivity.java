@@ -67,6 +67,7 @@ public class PaymentActivity extends AppCompatActivity {
 
     }
 
+
     private void processPayment() {
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD",
                 "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
@@ -75,7 +76,6 @@ public class PaymentActivity extends AppCompatActivity {
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
         startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
