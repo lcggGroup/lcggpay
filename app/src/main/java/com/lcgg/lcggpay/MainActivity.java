@@ -38,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
                 Analytics.class, Crashes.class);
-
-        Intent intent = new Intent(this,PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-        startService(intent);
     }
 
     @Override

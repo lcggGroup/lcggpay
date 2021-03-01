@@ -51,11 +51,16 @@ public class PayFragment extends Fragment {
         txt_title = root.findViewById(R.id.txt_title);
         txt_amount = root.findViewById(R.id.txt_amount);
 
+        //start paypal service
+        Intent intent = new Intent(getActivity(),PayPalService.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
+        getActivity().startService(intent);
+
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Confirm", Toast.LENGTH_SHORT).show();
-                //processPayment();
+                processPayment();
             }
         });
 
