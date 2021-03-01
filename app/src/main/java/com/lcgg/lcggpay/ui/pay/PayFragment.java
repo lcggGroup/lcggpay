@@ -90,7 +90,7 @@ public class PayFragment extends Fragment {
             }
             else {
                 //Successful Scan
-                txt_title.setText(result.getContents());
+                txt_title.setText("Sample Title");
                 txt_amount.setText("15");
             }
         }
