@@ -73,10 +73,10 @@ public class PayFragment extends Fragment {
     private void processPayment() {
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(txt_amount.getText().toString()),"USD",
                 txt_title.getText().toString(), PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent iPay = new Intent(getContext(), AcceptedActivity.class);
-        iPay.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-        iPay.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(iPay, PayPal.PAYPAL_REQUEST_CODE);
+        Intent intent = new Intent(getActivity(), AcceptedActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
+        intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
     }
 
     @Override
