@@ -31,8 +31,8 @@ public class PayFragment extends Fragment {
     Button btnConfirm;
     Button btnCancel;
 
-    String title;
-    String amount;
+    TextView txt_title;
+    TextView txt_amount;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,10 +48,14 @@ public class PayFragment extends Fragment {
         btnConfirm = root.findViewById(R.id.btn_confirm);
         btnCancel = root.findViewById(R.id.btn_cancel);
 
+        txt_title = root.findViewById(R.id.txt_title);
+        txt_amount = root.findViewById(R.id.txt_amount);
+
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                processPayment();
+                Toast.makeText(getContext(), "Confirm", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -59,6 +63,7 @@ public class PayFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -66,8 +71,8 @@ public class PayFragment extends Fragment {
     }
 
     private void processPayment() {
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(amount),"USD",
-                title, PayPalPayment.PAYMENT_INTENT_SALE);
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(txt_amount.getText().toString()),"USD",
+                txt_title.getText().toString(), PayPalPayment.PAYMENT_INTENT_SALE);
         Intent iPay = new Intent(getContext(), AcceptedActivity.class);
         iPay.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         iPay.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
@@ -85,8 +90,8 @@ public class PayFragment extends Fragment {
             }
             else {
                 //Successful Scan
-                title = result.getContents();
-                amount = "15";
+                txt_title.setText(result.getContents());
+                txt_amount.setText("15");
             }
         }
         else {
