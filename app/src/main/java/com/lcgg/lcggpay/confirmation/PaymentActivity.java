@@ -20,6 +20,7 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 
@@ -27,12 +28,6 @@ import static com.paypal.android.sdk.payments.PayPalProfileSharingActivity.RESUL
 import static com.paypal.android.sdk.payments.PaymentActivity.EXTRA_RESULT_CONFIRMATION;
 
 public class PaymentActivity extends AppCompatActivity {
-
-    Intent intentPay;
-    String amount = intentPay.getStringExtra("amount");
-
-    Button btnConfirm;
-    Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,42 +37,29 @@ public class PaymentActivity extends AppCompatActivity {
         AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
                 Analytics.class, Crashes.class);
 
-        //Start PayPal Service
-        Intent intent = new Intent(this,PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,PayPal.PAYPAL_CONFIG);
-        startService(intent);
+        Intent intent = getIntent();
 
-        btnConfirm = findViewById(R.id.btn_confirm);
-        btnCancel = findViewById(R.id.btn_cancel);
+        try {
+            JSONObject jsonObject = new JSONObject(intent.getStringExtra("PaymentDetails"));
+            showDetails(jsonObject.getJSONObject("response"),intent.getStringExtra("PaymentAmount"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //processPayment();
-                Toast.makeText(PaymentActivity.this, "Confirmed", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void showDetails(JSONObject response, String paymentAmount) {
+        try {
+            Toast.makeText(this, response.getString("id"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, response.getString("state"), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "$" + paymentAmount, Toast.LENGTH_SHORT).show();
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(PaymentActivity.this, "Cancelled", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+            //txtId.setText(response.getString("id"));
+            //txtStatus.setText(response.getString("state"));
+            //txtAmount.setText("$"+paymentAmount);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
-    private void processPayment() {
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(String.valueOf(amount)),"USD",
-                "Purchase Goods",PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent intent = new Intent(this, AcceptedActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-        intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }

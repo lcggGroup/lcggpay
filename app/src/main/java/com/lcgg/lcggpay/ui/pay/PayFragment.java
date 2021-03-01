@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.R;
-import com.lcgg.lcggpay.confirmation.AcceptedActivity;
 import com.lcgg.lcggpay.confirmation.PaymentActivity;
 import com.lcgg.lcggpay.data.model.PayPal;
 import com.paypal.android.sdk.payments.PayPalPayment;
@@ -78,7 +77,7 @@ public class PayFragment extends Fragment {
     private void processPayment() {
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(txt_amount.getText().toString()),"USD",
                 txt_title.getText().toString(), PayPalPayment.PAYMENT_INTENT_SALE);
-        Intent intent = new Intent(getActivity(), AcceptedActivity.class);
+        Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
         startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
