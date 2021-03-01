@@ -55,7 +55,7 @@ public class PayFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Confirm", Toast.LENGTH_SHORT).show();
-
+                processPayment();
             }
         });
 
