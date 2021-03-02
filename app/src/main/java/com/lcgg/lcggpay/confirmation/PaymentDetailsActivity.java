@@ -38,7 +38,7 @@ public class PaymentDetailsActivity extends AppCompatActivity {
         try {
             Toast.makeText(this, response.getString("id"), Toast.LENGTH_SHORT).show();
             Toast.makeText(this, response.getString("state"), Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "$" + paymentAmount, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "$ " + paymentAmount, Toast.LENGTH_SHORT).show();
 
             //txtId.setText(response.getString("id"));
             //txtStatus.setText(response.getString("state"));

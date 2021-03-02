@@ -75,7 +75,6 @@ public class PayFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -112,8 +111,8 @@ public class PayFragment extends Fragment {
                             try {
                                 String paymentDetails = confirmation.toJSONObject().toString(4);
                                 startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
-                                        .putExtra("Payment Details",paymentDetails)
-                                        .putExtra("Amount", txt_amount.getText()));
+                                        .putExtra("PaymentDetails",paymentDetails)
+                                        .putExtra("PaymentAmount", txt_amount.getText()));
                             } catch (JSONException e){
                                 e.printStackTrace();
                             }
