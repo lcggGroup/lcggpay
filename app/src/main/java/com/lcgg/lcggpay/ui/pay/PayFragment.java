@@ -67,7 +67,6 @@ public class PayFragment extends Fragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Confirm", Toast.LENGTH_SHORT).show();
                 processPayment();
             }
         });
@@ -106,7 +105,6 @@ public class PayFragment extends Fragment {
                 txt_title.setText("Sample Title");
                 txt_amount.setText("15");
 
-
                 if (requestCode == PAYPAL_REQUEST_CODE){
                     if (resultCode == RESULT_OK){
                         PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
@@ -124,7 +122,6 @@ public class PayFragment extends Fragment {
                         Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
                 } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
                     Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
-
             }
         }
         else {
