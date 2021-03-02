@@ -103,10 +103,12 @@ public class PayFragment extends Fragment {
                 txt_title.setText("Sample Title");
                 txt_amount.setText("15");
 
-                Toast.makeText(getContext(), "Request Code: " + requestCode, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Result Code: " + resultCode, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Result Code: " + RESULT_OK, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Result Code: " + Activity.RESULT_OK, Toast.LENGTH_SHORT).show();
 
                 if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
-                    if (resultCode == PaymentActivity.RESULT_OK){
+                    if (resultCode == Activity.RESULT_OK){
                         PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                         if (confirmation != null){
                             try {
@@ -119,7 +121,7 @@ public class PayFragment extends Fragment {
                             }
                         }
                     }
-                    else if (resultCode == PaymentActivity.RESULT_CANCELED)
+                    else if (resultCode == Activity.RESULT_CANCELED)
                         Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
                     else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
                         Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
