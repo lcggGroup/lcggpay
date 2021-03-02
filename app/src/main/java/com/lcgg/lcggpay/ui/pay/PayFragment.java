@@ -33,7 +33,6 @@ import org.json.JSONException;
 import java.math.BigDecimal;
 
 import static android.app.Activity.RESULT_OK;
-import static com.lcgg.lcggpay.data.model.PayPal.PAYPAL_REQUEST_CODE;
 
 public class PayFragment extends Fragment {
     Button btnConfirm;
@@ -87,7 +86,7 @@ public class PayFragment extends Fragment {
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
+        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
     }
 
     @Override
@@ -104,7 +103,9 @@ public class PayFragment extends Fragment {
                 txt_title.setText("Sample Title");
                 txt_amount.setText("15");
 
-                if (requestCode == PAYPAL_REQUEST_CODE){
+                Toast.makeText(getContext(), "Request Code: " + requestCode, Toast.LENGTH_SHORT).show();
+
+                if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
                     if (resultCode == RESULT_OK){
                         PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                         if (confirmation != null){
