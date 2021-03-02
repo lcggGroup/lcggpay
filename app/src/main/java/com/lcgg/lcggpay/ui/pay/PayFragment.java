@@ -103,12 +103,14 @@ public class PayFragment extends Fragment {
                 txt_title.setText("Sample Title");
                 txt_amount.setText("15");
 
+                Toast.makeText(getContext(), "Request Code: " + requestCode, Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), "Result Code: " + resultCode, Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), "Result Code: RESULT_OK = " + RESULT_OK, Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), "Result Code: Activity.RESULT_OK = " + Activity.RESULT_OK, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Result Code: PaymentActivity.RESULT_OK = " + PaymentActivity.RESULT_OK, Toast.LENGTH_SHORT).show();
 
                 if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
-                    if (resultCode == Activity.RESULT_OK){
+                    if (resultCode == PaymentActivity.RESULT_OK){
                         PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                         if (confirmation != null){
                             try {
