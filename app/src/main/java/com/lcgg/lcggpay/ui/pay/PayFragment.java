@@ -103,8 +103,6 @@ public class PayFragment extends Fragment {
                 txt_title.setText("Sample Title");
                 txt_amount.setText("15");
 
-                Toast.makeText(getContext(), "Request Code: " + requestCode, Toast.LENGTH_SHORT).show();
-
                 if (requestCode == PayPal.PAYPAL_REQUEST_CODE){
                     if (resultCode == RESULT_OK){
                         PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
