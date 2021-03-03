@@ -26,6 +26,7 @@ import com.lcgg.lcggpay.data.model.PayPal;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
@@ -61,7 +62,7 @@ public class PayFragment extends Fragment {
         //start paypal service
         Intent intent = new Intent(getActivity(),PayPalService.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
-        getActivity().startService(intent);
+        this.getActivity().startService(intent);
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +87,13 @@ public class PayFragment extends Fragment {
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        getActivity().startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+        this.getActivity().startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+    }
+
+    @Override
+    public void onDestroy() {
+        this.getActivity().stopService(new Intent(this.getActivity(), PayPalService.class));
+        super.onDestroy();
     }
 
     @Override
@@ -104,25 +111,26 @@ public class PayFragment extends Fragment {
                 txt_amount.setText("15");
 
                 if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
-                    if (resultCode == Activity.RESULT_OK){
+                    if (resultCode == RESULT_OK) {
                         PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                        if (confirmation != null){
+                        if (confirmation != null) {
                             try {
                                 String paymentDetails = confirmation.toJSONObject().toString(4);
-                                getActivity().startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
-                                        .putExtra("PaymentDetails",paymentDetails)
-                                        .putExtra("PaymentAmount", txt_amount.getText()));
-                            } catch (JSONException e){
+
+                                this.getActivity().startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
+                                        .putExtra("PaymentDetails", paymentDetails)
+                                        .putExtra("PaymentAmout", txt_amount.getText())
+                                );
+                            } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
                     }
                     else if (resultCode == Activity.RESULT_CANCELED)
-                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
-                    else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-                        Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this.getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
                 }
-
+                else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+                    Toast.makeText(this.getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
             }
         }
         else {
