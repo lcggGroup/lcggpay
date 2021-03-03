@@ -86,7 +86,7 @@ public class PayFragment extends Fragment {
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivity(intent);
+        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
     }
 
     @Override
@@ -101,19 +101,28 @@ public class PayFragment extends Fragment {
             else {
                 //Successful Scan
                 txt_title.setText("Sample Title");
-                txt_amount.setText("25");
+                txt_amount.setText("15");
 
-                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (confirmation != null){
-                    try {
-                        String paymentDetails = confirmation.toJSONObject().toString(4);
-                        startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
-                                .putExtra("PaymentDetails",paymentDetails)
-                                .putExtra("PaymentAmount", txt_amount.getText()));
-                    } catch (JSONException e){
-                        e.printStackTrace();
+                if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
+                    if (resultCode == Activity.RESULT_OK){
+                        PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                        if (confirmation != null){
+                            try {
+                                String paymentDetails = confirmation.toJSONObject().toString(4);
+                                startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
+                                        .putExtra("PaymentDetails",paymentDetails)
+                                        .putExtra("PaymentAmount", txt_amount.getText()));
+                            } catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
                     }
+                    else if (resultCode == Activity.RESULT_CANCELED)
+                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+                    else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+                        Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
                 }
+
             }
         }
         else {
