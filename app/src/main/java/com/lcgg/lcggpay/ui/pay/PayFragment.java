@@ -101,35 +101,25 @@ public class PayFragment extends Fragment {
             else {
                 //Successful Scan
                 txt_title.setText("Sample Title");
-                txt_amount.setText("15");
+                txt_amount.setText("25");
 
-                Toast.makeText(getContext(), "Request Code: " + requestCode, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Result Code: " + resultCode, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Result Code: RESULT_OK = " + RESULT_OK, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Result Code: Activity.RESULT_OK = " + Activity.RESULT_OK, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Result Code: PaymentActivity.RESULT_OK = " + PaymentActivity.RESULT_OK, Toast.LENGTH_SHORT).show();
-
-                if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
-                    if (resultCode == RESULT_OK){
-                        PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                        if (confirmation != null){
-                            try {
-                                String paymentDetails = confirmation.toJSONObject().toString(4);
-                                startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
-                                        .putExtra("PaymentDetails",paymentDetails)
-                                        .putExtra("PaymentAmount", txt_amount.getText()));
-                            } catch (JSONException e){
-                                e.printStackTrace();
-                            }
+                if (resultCode == PaymentActivity.RESULT_OK){
+                    PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                    if (confirmation != null){
+                        try {
+                            String paymentDetails = confirmation.toJSONObject().toString(4);
+                            startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
+                                    .putExtra("PaymentDetails",paymentDetails)
+                                    .putExtra("PaymentAmount", txt_amount.getText()));
+                        } catch (JSONException e){
+                            e.printStackTrace();
                         }
                     }
-                    else if (resultCode == Activity.RESULT_CANCELED)
-                        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
-                    else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-                        Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(getActivity(), "No response", Toast.LENGTH_SHORT).show();
                 }
+                else if (resultCode == PaymentActivity.RESULT_CANCELED)
+                    Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+                else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+                    Toast.makeText(getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
 
             }
         }
