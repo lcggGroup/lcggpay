@@ -86,7 +86,7 @@ public class PayFragment extends Fragment {
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+        startActivity(intent);
     }
 
     @Override
