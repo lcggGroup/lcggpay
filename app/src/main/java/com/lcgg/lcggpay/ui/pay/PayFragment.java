@@ -86,7 +86,7 @@ public class PayFragment extends Fragment {
         Intent intent = new Intent(getActivity(), PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, PayPal.PAYPAL_CONFIG);
         intent.putExtra(com.paypal.android.sdk.payments.PaymentActivity.EXTRA_PAYMENT,payPalPayment);
-        startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
+        getActivity().startActivityForResult(intent, PayPal.PAYPAL_REQUEST_CODE);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class PayFragment extends Fragment {
                         if (confirmation != null){
                             try {
                                 String paymentDetails = confirmation.toJSONObject().toString(4);
-                                startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
+                                getActivity().startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
                                         .putExtra("PaymentDetails",paymentDetails)
                                         .putExtra("PaymentAmount", txt_amount.getText()));
                             } catch (JSONException e){
