@@ -51,24 +51,25 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mAuth.createUserWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
+                mAuth.signInWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "createUserWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
 
+                                if (!task.isSuccessful()) {
+                                    // there was an error
+                                    if (txt_password.getText().toString().length() < 6) {
+                                        txt_password.setError("Minimum length is 7");
+                                    } else {
+                                        Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
                                     Intent intent = new Intent(Login.this, MainActivity.class);
                                     startActivity(intent);
-                                    //updateUI(user);
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(Login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    //updateUI(null);
+                                    finish();
                                 }
                             }
                         });
