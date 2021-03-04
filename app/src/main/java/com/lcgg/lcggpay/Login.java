@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +30,8 @@ public class Login extends AppCompatActivity {
     EditText txt_username;
     EditText txt_password;
 
+    TextView txt_register;
+
     Button btnSubmit;
     Button btnCancel;
 
@@ -40,11 +44,10 @@ public class Login extends AppCompatActivity {
 
         txt_username = findViewById(R.id.txt_username);
         txt_password = findViewById(R.id.txt_password);
+        txt_register = findViewById(R.id.txt_register);
 
         btnSubmit = findViewById(R.id.btn_submit);
         btnCancel = findViewById(R.id.btn_cancel);
-
-
 
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +83,14 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Login.this, "Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        txt_register.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        txt_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Login.this, "register", Toast.LENGTH_SHORT).show();
             }
         });
     }

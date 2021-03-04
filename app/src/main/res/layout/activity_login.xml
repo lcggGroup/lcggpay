@@ -97,7 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:text="click here"/>
+                android:text="click here"
+                android:id="@+id/txt_register"/>
         </LinearLayout>
 
     </LinearLayout>
