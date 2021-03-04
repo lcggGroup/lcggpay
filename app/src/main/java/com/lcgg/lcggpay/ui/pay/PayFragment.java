@@ -111,32 +111,30 @@ public class PayFragment extends Fragment {
                 txt_amount.setText("15");
             }
         }
-
-        if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (confirmation != null) {
-                    try {
-                        String paymentDetails = confirmation.toJSONObject().toString(4);
-
-                        this.getActivity().startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
-                                .putExtra("PaymentDetails", paymentDetails)
-                                .putExtra("PaymentAmout", txt_amount.getText())
-                        );
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            else if (resultCode == Activity.RESULT_CANCELED)
-                Toast.makeText(this.getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
-        }
-        else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
-            Toast.makeText(this.getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
-
-
         else {
             super.onActivityResult(requestCode, resultCode, data);
+
+            if (requestCode == PayPal.PAYPAL_REQUEST_CODE) {
+                if (resultCode == RESULT_OK) {
+                    PaymentConfirmation confirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                    if (confirmation != null) {
+                        try {
+                            String paymentDetails = confirmation.toJSONObject().toString(4);
+
+                            this.getActivity().startActivity(new Intent(getActivity(), PaymentDetailsActivity.class)
+                                    .putExtra("PaymentDetails", paymentDetails)
+                                    .putExtra("PaymentAmout", txt_amount.getText())
+                            );
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                else if (resultCode == Activity.RESULT_CANCELED)
+                    Toast.makeText(this.getActivity(), "Cancel", Toast.LENGTH_SHORT).show();
+                else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID)
+                    Toast.makeText(this.getActivity(), "Invalid", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
