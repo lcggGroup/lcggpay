@@ -48,10 +48,8 @@ public class Login extends AppCompatActivity {
         txt_register = findViewById(R.id.txt_register);
         txt_reset = findViewById(R.id.txt_reset);
 
-
         btnSubmit = findViewById(R.id.btn_submit);
         btnCancel = findViewById(R.id.btn_cancel);
-
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +107,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Login.this, "register", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Login.this, Register.class);
+                startActivity(intent);
             }
         });
 
@@ -117,6 +117,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Login.this, "reset", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Login.this, Reset.class);
+                startActivity(intent);
             }
         });
     }
