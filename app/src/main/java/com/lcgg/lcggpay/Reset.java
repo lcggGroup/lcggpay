@@ -21,6 +21,7 @@ public class Reset extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     TextView txt_message;
+    TextView txt_notice;
     EditText txt_email;
 
     Button btnSubmit;
@@ -34,6 +35,7 @@ public class Reset extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         txt_message = findViewById(R.id.txt_reset_message);
+        txt_notice = findViewById(R.id.txt_reset_notice);
         txt_email = findViewById(R.id.txt_reset_email);
 
         btnSubmit = findViewById(R.id.btn_reset_submit);
@@ -54,6 +56,7 @@ public class Reset extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     txt_message.setText("We have sent you instructions to reset your password!");
+                                    txt_notice.setVisibility(View.GONE);
                                     txt_email.setVisibility(View.GONE);
                                     btnSubmit.setVisibility(View.GONE);
                                     btnCancel.setText("Done");

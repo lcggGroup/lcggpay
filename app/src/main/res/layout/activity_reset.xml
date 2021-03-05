@@ -22,6 +22,14 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:id="@+id/txt_reset_notice"
+            android:text="We just need your registered email address to sent you password reset instructions."/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
