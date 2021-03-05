@@ -44,12 +44,14 @@ public class Register extends AppCompatActivity {
 
         btnSubmit.setClickable(false);
 
-        if (!TextUtils.isEmpty(txt_reg_username.getText().toString())) {}
-        if(!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())){
+        if (TextUtils.isEmpty(txt_reg_username.getText().toString())) {
+            txt_reg_retype_pass.setError("Enter Email");
+        }
+        if(!(txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()))){
             txt_reg_retype_pass.setError("Password Not matching");
         }
         else if (!(TextUtils.isEmpty(txt_reg_username.getText().toString())) &&
-                !(txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()))){
+                (txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()))){
             btnSubmit.setClickable(true);
         }
 
