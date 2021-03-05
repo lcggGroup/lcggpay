@@ -60,37 +60,36 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (TextUtils.isEmpty(txt_reg_username.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
-                    return;
+                    txt_reg_username.setError("Enter an email address for your username");
                 }
-
-                if (TextUtils.isEmpty(txt_reg_password.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                    return;
+                else if (TextUtils.isEmpty(txt_reg_password.getText().toString())) {
+                    txt_reg_password.setError("Enter your password");
                 }
-
-                if (txt_reg_password.getText().toString().length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
-                    return;
+                else if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
+                    txt_reg_retype_pass.setError("Confirm your password");
                 }
+                else if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
+                    txt_reg_password.setError("Your password must be must with the confirmed password");
+                }
+                else {
+                    mAuth.createUserWithEmailAndPassword(txt_reg_username.getText().toString(), txt_reg_password.getText().toString())
+                            .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                mAuth.createUserWithEmailAndPassword(txt_reg_username.getText().toString(), txt_reg_password.getText().toString())
-                        .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(Register.this, "Authentication failed." + task.getException(),
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    startActivity(new Intent(Register.this, MainActivity.class));
-                                    finish();
+                                    // If sign in fails, display a message to the user. If sign in succeeds
+                                    // the auth state listener will be notified and logic to handle the
+                                    // signed in user can be handled in the listener.
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(Register.this, "Authentication failed." + task.getException(),
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        startActivity(new Intent(Register.this, MainActivity.class));
+                                        finish();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
 
