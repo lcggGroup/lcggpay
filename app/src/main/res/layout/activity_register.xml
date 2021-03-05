@@ -35,6 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center|center"
+                    android:id="@+id/txt_reg_username_main"
                     android:text="Username:"/>
 
 
@@ -55,6 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center|center"
+                    android:id="@+id/txt_reg_password_main"
                     android:text="Password:"/>
                 <EditText
                     android:layout_width="match_parent"

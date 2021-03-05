@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,8 @@ public class Register extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    TextView txt_m_username;
+    TextView txt_m_password;
     EditText txt_reg_username;
     EditText txt_reg_password;
 
@@ -33,6 +36,8 @@ public class Register extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        txt_m_username = findViewById(R.id.txt_reg_username_main);
+        txt_m_password = findViewById(R.id.txt_reg_password_main);
         txt_reg_username = findViewById(R.id.txt_reg_username);
         txt_reg_password = findViewById(R.id.txt_reg_username);
 
@@ -70,6 +75,12 @@ public class Register extends AppCompatActivity {
                                     Toast.makeText(Register.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+
+                                    txt_m_username.setText("Congratulations, now you can pay your online transactions through LCGG Pay");
+                                    txt_m_password.setVisibility(View.GONE);
+                                    txt_reg_username.setVisibility(View.GONE);
+                                    txt_reg_password.setVisibility(View.GONE);
+
                                     btnSubmit.setVisibility(View.GONE);
                                     btnCancel.setText("Done");
                                     btnCancel.setOnClickListener(new View.OnClickListener() {
