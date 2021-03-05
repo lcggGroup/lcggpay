@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
     EditText txt_password;
 
     TextView txt_register;
+    TextView txt_reset;
 
     Button btnSubmit;
     Button btnCancel;
@@ -45,6 +46,8 @@ public class Login extends AppCompatActivity {
         txt_username = findViewById(R.id.txt_username);
         txt_password = findViewById(R.id.txt_password);
         txt_register = findViewById(R.id.txt_register);
+        txt_reset = findViewById(R.id.txt_reset);
+
 
         btnSubmit = findViewById(R.id.btn_submit);
         btnCancel = findViewById(R.id.btn_cancel);
@@ -64,9 +67,13 @@ public class Login extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
+                                    if (!isEmailValid(txt_username.getText().toString())) {
+                                        txt_password.setError("Your Email Id is Invalid.");
+                                    }
                                     if (txt_password.getText().toString().length() < 6) {
                                         txt_password.setError("Minimum length is 7");
-                                    } else {
+                                    }
+                                    else {
                                         Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
                                     }
                                 } else {
@@ -93,6 +100,18 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "register", Toast.LENGTH_SHORT).show();
             }
         });
+
+        txt_reset.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+        txt_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Login.this, "reset", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     @Override
