@@ -31,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center|center"
                 android:text="Email Address:"
-                android:id="@+id/txt_reset_messeage"/>
+                android:id="@+id/txt_reset_message"/>
 
 
             <EditText
