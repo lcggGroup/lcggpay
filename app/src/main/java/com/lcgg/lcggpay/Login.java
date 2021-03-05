@@ -67,10 +67,10 @@ public class Login extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    if (!isEmailValid(txt_username.getText().toString()) || txt_username.getText() == null) {
+                                    if (!isEmailValid(txt_username.getText().toString()) || txt_username.getText().toString().isEmpty()) {
                                         txt_username.setError("Your Email Id is Invalid.");
                                     }
-                                    if (txt_password.getText().toString().length() < 6 || txt_password.getText() == null) {
+                                    if (txt_password.getText().toString().length() < 6 || txt_password.getText().toString().isEmpty()) {
                                         txt_password.setError("Minimum length is 7");
                                     }
 
