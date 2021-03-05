@@ -57,39 +57,42 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (txt_username.getText().toString().isEmpty()) {
-                    txt_username.setError("Your Email Id is Invalid.");
+                if (txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) {
+                    txt_username.setError("Enter the email address you've registered as your username.");
                 }
-                if (txt_password.getText().toString().isEmpty()) {
-                    txt_password.setError("Minimum length is 7");
+                if (txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null) {
+                    txt_password.setError("Enter your password");
                 }
+                else if (!(txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) &&
+                        !(txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null)){
 
-                mAuth.signInWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
+                    mAuth.signInWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
+                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    // If sign in fails, display a message to the user. If sign in succeeds
+                                    // the auth state listener will be notified and logic to handle the
+                                    // signed in user can be handled in the listener.
 
-                                if (!task.isSuccessful()) {
-                                    // there was an error
-                                    if (!isEmailValid(txt_username.getText().toString())) {
-                                        txt_username.setError("Your Email Id is Invalid.");
+                                    if (!task.isSuccessful()) {
+                                        // there was an error
+                                        if (!isEmailValid(txt_username.getText().toString())) {
+                                            txt_username.setError("Your Email Id is Invalid.");
+                                        }
+                                        if (txt_password.getText().toString().length() < 6 ) {
+                                            txt_password.setError("Minimum length is 7");
+                                        }
+                                        else {
+                                            Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
+                                        }
+                                    } else {
+                                        Intent intent = new Intent(Login.this, MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
-                                    if (txt_password.getText().toString().length() < 6 ) {
-                                        txt_password.setError("Minimum length is 7");
-                                    }
-                                    else {
-                                        Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
-                                    }
-                                } else {
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
 
@@ -120,15 +123,5 @@ public class Login extends AppCompatActivity {
 
     private boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            //reload();
-        }
     }
 }
