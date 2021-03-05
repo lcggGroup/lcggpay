@@ -67,12 +67,13 @@ public class Login extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    if (!isEmailValid(txt_username.getText().toString())) {
+                                    if (!isEmailValid(txt_username.getText().toString()) || txt_username.getText() == null) {
                                         txt_username.setError("Your Email Id is Invalid.");
                                     }
-                                    if (txt_password.getText().toString().length() < 6) {
+                                    if (txt_password.getText().toString().length() < 6 || txt_password.getText() == null) {
                                         txt_password.setError("Minimum length is 7");
                                     }
+
                                     else {
                                         Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
                                     }
@@ -89,7 +90,8 @@ public class Login extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                finish();
+                System.exit(0);
             }
         });
 
