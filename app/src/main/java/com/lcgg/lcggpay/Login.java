@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) {
-                    txt_username.setError("Enter the email address you've registered as your username.");
+                    txt_username.setError("Enter the registered email address as your username.");
                 }
                 if (txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null) {
                     txt_password.setError("Enter your password");
@@ -75,10 +75,10 @@ public class Login extends AppCompatActivity {
                                     if (!task.isSuccessful()) {
                                         // there was an error
                                         if (!isEmailValid(txt_username.getText().toString())) {
-                                            txt_username.setError("Your Email Id is Invalid.");
+                                            txt_username.setError("Enter your registered email address");
                                         }
                                         if (txt_password.getText().toString().length() < 6 ) {
-                                            txt_password.setError("Minimum length is 7");
+                                            txt_password.setError("Minimum length is 7.");
                                         }
                                         else {
                                             Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
