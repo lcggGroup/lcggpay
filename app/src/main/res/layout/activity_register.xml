@@ -13,11 +13,7 @@
         android:gravity="top|center"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:src="@mipmap/ic_lcggpay"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center|center"
-                    android:text="Username:"/>
+                    android:text="Username / Email :"/>
 
 
                 <EditText
@@ -55,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center|center"
-                    android:text="Password:"/>
+                    android:text="Password:               "/>
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -63,6 +59,24 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:id="@+id/txt_reg_password"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center"
+                    android:text="Re-type Password:"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/txt_reg_retype_pass"/>
             </LinearLayout>
 
         </LinearLayout>
