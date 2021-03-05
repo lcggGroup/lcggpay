@@ -57,6 +57,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (txt_username.getText().toString().isEmpty()) {
+                    txt_username.setError("Your Email Id is Invalid.");
+                }
+                if (txt_password.getText().toString().isEmpty()) {
+                    txt_password.setError("Minimum length is 7");
+                }
+
                 mAuth.signInWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -67,13 +74,12 @@ public class Login extends AppCompatActivity {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    if (!isEmailValid(txt_username.getText().toString()) || txt_username.getText().toString().isEmpty()) {
+                                    if (!isEmailValid(txt_username.getText().toString())) {
                                         txt_username.setError("Your Email Id is Invalid.");
                                     }
-                                    if (txt_password.getText().toString().length() < 6 || txt_password.getText().toString().isEmpty()) {
+                                    if (txt_password.getText().toString().length() < 6 ) {
                                         txt_password.setError("Minimum length is 7");
                                     }
-
                                     else {
                                         Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
                                     }
