@@ -14,8 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LCGGPay">
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Reset" />
+        <activity
+            android:label="Register"
+            android:name=".Register"/>
+        <activity
+            android:label="Forgot Password"
+            android:name=".Reset" />
         <activity
             android:name=".Login"
             android:label="Login">
