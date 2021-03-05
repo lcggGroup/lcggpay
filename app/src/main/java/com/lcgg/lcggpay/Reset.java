@@ -43,6 +43,11 @@ public class Reset extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (TextUtils.isEmpty(txt_email.getText().toString())) {
+                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 mAuth.sendPasswordResetEmail(txt_email.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

@@ -98,7 +98,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                System.exit(0);
+                //System.exit(0);
             }
         });
 
@@ -106,7 +106,6 @@ public class Login extends AppCompatActivity {
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, "register", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Login.this, Register.class);
                 startActivity(intent);
             }
@@ -116,7 +115,6 @@ public class Login extends AppCompatActivity {
         txt_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, "reset", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Login.this, Reset.class);
                 startActivity(intent);
             }
