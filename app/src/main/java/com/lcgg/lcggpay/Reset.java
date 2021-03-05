@@ -72,6 +72,7 @@ public class Reset extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Reset.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
