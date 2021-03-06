@@ -1,8 +1,10 @@
 package com.lcgg.lcggpay;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -55,8 +57,8 @@ public class Register extends AppCompatActivity {
                     txt_reg_password.setError("Minimum length is 7.");
                 }
                 else if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
-                    txt_reg_retype_pass.setError("Confirm your password");                }
-
+                    txt_reg_retype_pass.setError("Confirm your password");
+                }
                 else if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_password.setError("Your password must be the same with your confirmed password");
                 }
@@ -69,8 +71,18 @@ public class Register extends AppCompatActivity {
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
                                     if (!task.isSuccessful()) {
-                                        Toast.makeText(Register.this, "Authentication failed." + task.getException().getMessage(),
-                                                Toast.LENGTH_SHORT).show();
+
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
+                                        builder.setTitle("Authentication Failed");
+                                        builder.setMessage(task.getException().getMessage());
+                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                // You don't have to do anything here if you just
+                                                // want it dismissed when clicked
+                                            }
+                                        });
+                                        builder.create();
+
                                     } else {
                                         startActivity(new Intent(Register.this, MainActivity.class));
                                         finish();
