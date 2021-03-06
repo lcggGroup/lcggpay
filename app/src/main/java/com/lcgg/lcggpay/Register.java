@@ -36,24 +36,11 @@ public class Register extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         txt_reg_username = findViewById(R.id.txt_reg_username);
-        txt_reg_password = findViewById(R.id.txt_reg_username);
+        txt_reg_password = findViewById(R.id.txt_reg_password);
         txt_reg_retype_pass = findViewById(R.id.txt_reg_retype_pass);
 
         btnSubmit = findViewById(R.id.btn_reg_submit);
         btnCancel = findViewById(R.id.btn_reg_cancel);
-
-        btnSubmit.setClickable(false);
-
-        if (TextUtils.isEmpty(txt_reg_username.getText().toString())) {
-            txt_reg_retype_pass.setError("Enter Email");
-        }
-        if(!(txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()))){
-            txt_reg_retype_pass.setError("Password Not matching");
-        }
-        else if (!(TextUtils.isEmpty(txt_reg_username.getText().toString())) &&
-                (txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()))){
-            btnSubmit.setClickable(true);
-        }
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +56,7 @@ public class Register extends AppCompatActivity {
                     txt_reg_retype_pass.setError("Confirm your password");
                 }
                 else if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
-                    txt_reg_password.setError("Your password must be must with the confirmed password");
+                    txt_reg_password.setError("Your password must be the same with your confirmed password");
                 }
                 else {
                     mAuth.createUserWithEmailAndPassword(txt_reg_username.getText().toString(), txt_reg_password.getText().toString())
