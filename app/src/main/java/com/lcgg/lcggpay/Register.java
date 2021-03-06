@@ -81,7 +81,7 @@ public class Register extends AppCompatActivity {
                                                 // want it dismissed when clicked
                                             }
                                         });
-                                        builder.create();
+                                        builder.create().show();
 
                                     } else {
                                         startActivity(new Intent(Register.this, MainActivity.class));
