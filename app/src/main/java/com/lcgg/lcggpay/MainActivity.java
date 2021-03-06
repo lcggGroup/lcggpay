@@ -1,22 +1,22 @@
 package com.lcgg.lcggpay;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
-import com.amplifyframework.auth.AuthProvider;
-import com.amplifyframework.core.Amplify;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.lcgg.lcggpay.data.model.PayPal;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
+import com.paypal.android.sdk.payments.PayPalService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -38,29 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
         AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
                 Analytics.class, Crashes.class);
-
-        //login();
-
     }
 
-    private void login() {
-        Amplify.Auth.signInWithSocialWebUI(
-                AuthProvider.amazon(),
-                this,
-                result -> {
-                    Log.i(TAG, "AuthQuickstart RESULT " + result.toString());
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    });
-                },
-                error -> {
-                    Log.e(TAG, "AuthQuickstart ERROR " + error.toString());
-                }
-        );
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

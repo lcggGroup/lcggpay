@@ -13,24 +13,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.lcgg.lcggpay.R;
-import com.lcgg.lcggpay.ui.pay.PayViewModel;
 
 public class WalletFragment extends Fragment {
 
-    private WalletViewModel walletViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        walletViewModel =
-                new ViewModelProvider(this).get(WalletViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
-        final TextView textView = root.findViewById(R.id.text_wallet);
-        walletViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }

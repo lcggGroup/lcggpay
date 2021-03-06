@@ -13,24 +13,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.lcgg.lcggpay.R;
-import com.lcgg.lcggpay.ui.pay.PayViewModel;
 
 public class StoreFragment extends Fragment {
 
-    private StoreViewModel storeViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        storeViewModel =
-                new ViewModelProvider(this).get(StoreViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_store, container, false);
-        final TextView textView = root.findViewById(R.id.text_store);
-        storeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }
