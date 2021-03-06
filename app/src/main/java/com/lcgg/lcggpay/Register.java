@@ -71,7 +71,7 @@ public class Register extends AppCompatActivity {
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
                                     if (!task.isSuccessful()) {
-                                        Toast.makeText(Register.this, "Authentication failed." + task.getException(),
+                                        Toast.makeText(Register.this, "Authentication failed." + task.getException().getMessage(),
                                                 Toast.LENGTH_SHORT).show();
                                     } else {
                                         startActivity(new Intent(Register.this, MainActivity.class));
