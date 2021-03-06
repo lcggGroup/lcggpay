@@ -9,6 +9,6 @@ public class PayPal {
     public static final String PAYPAL_CLIENT_ID_LIVE = "AXJZVreUJNT33unQP6PWnPwDSuJN-5GZWVwoDrvemvPbJNK6uNfNTOQ5BmWckuZSt6KU5k30ZgvBmhci";
 
     public static final PayPalConfiguration PAYPAL_CONFIG = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-            .clientId(PAYPAL_CLIENT_ID_SANDBOX);
+            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION)
+            .clientId(PAYPAL_CLIENT_ID_LIVE);
 }
