@@ -45,19 +45,18 @@ public class Register extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (TextUtils.isEmpty(txt_reg_username.getText().toString())) {
                     txt_reg_username.setError("Enter an email address for your username");
                 }
                 else if (TextUtils.isEmpty(txt_reg_password.getText().toString())) {
                     txt_reg_password.setError("Enter your password");
                 }
-                else if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
-                    txt_reg_retype_pass.setError("Confirm your password");
-                }
                 else if (txt_reg_password.getText().toString().length() < 6 ) {
                     txt_reg_password.setError("Minimum length is 7.");
                 }
+                else if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
+                    txt_reg_retype_pass.setError("Confirm your password");                }
+
                 else if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_password.setError("Your password must be the same with your confirmed password");
                 }
@@ -66,7 +65,6 @@ public class Register extends AppCompatActivity {
                             .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
                                     // signed in user can be handled in the listener.
