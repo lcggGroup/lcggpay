@@ -55,6 +55,9 @@ public class Register extends AppCompatActivity {
                 else if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_retype_pass.setError("Confirm your password");
                 }
+                else if (txt_reg_password.getText().toString().length() < 6 ) {
+                    txt_reg_password.setError("Minimum length is 7.");
+                }
                 else if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_password.setError("Your password must be the same with your confirmed password");
                 }
