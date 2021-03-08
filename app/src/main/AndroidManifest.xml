@@ -4,7 +4,6 @@
     package="com.lcgg.lcggpay">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -24,16 +23,11 @@
             android:label="LCGG Pay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity" />
-        <activity
-            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            android:screenOrientation="portrait"
-            tools:replace="screenOrientation" />
     </application>
 
 </manifest>
