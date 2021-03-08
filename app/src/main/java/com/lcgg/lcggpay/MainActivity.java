@@ -12,11 +12,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.lcgg.lcggpay.data.model.PayPal;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
-import com.paypal.android.sdk.payments.PayPalService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
