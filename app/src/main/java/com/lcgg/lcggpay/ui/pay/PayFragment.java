@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
-
 import com.lcgg.lcggpay.R;
 
 import static android.app.Activity.RESULT_OK;
