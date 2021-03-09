@@ -140,7 +140,7 @@ public class Register extends AppCompatActivity {
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         String strDate = dateFormat.format(date).toString();
 
-        Wallet wallet = new Wallet (description, amount, strDate);
-        mDatabase.child(mAuth.getUid()).child("Wallet").child("transactions").setValue(wallet);
+        Wallet wallet = new Wallet (description, amount);
+        mDatabase.child(mAuth.getUid()).child("Wallet").child("transactions").child(strDate).setValue(wallet);
     }
 }
