@@ -25,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class Register extends AppCompatActivity {
     private static final String TAG = "Register";
 
@@ -108,6 +111,7 @@ public class Register extends AppCompatActivity {
 
                                     } else {
                                         writeNewUser(txt_reg_username.getText().toString(),txt_reg_firstName.getText().toString(),txt_reg_lastName.getText().toString());
+                                        writeNewWallet("Initial Amount", "0");
 
                                         startActivity(new Intent(Register.this, MainActivity.class));
                                         finish();
@@ -129,5 +133,14 @@ public class Register extends AppCompatActivity {
     public void writeNewUser(String username, String firstName, String lastName) {
         Profile profile = new Profile (username, firstName, lastName);
         mDatabase.child(mAuth.getUid()).child("Profile").setValue(profile);
+    }
+
+    public void writeNewWallet(String description, String amount){
+        Date date = new Date();
+        DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
+        String strDate = dateFormat.format(date).toString();
+
+        Wallet wallet = new Wallet (description, amount);
+        mDatabase.child(mAuth.getUid()).child("Wallet").setValue(wallet);
     }
 }
