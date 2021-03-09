@@ -141,6 +141,6 @@ public class Register extends AppCompatActivity {
         String strDate = dateFormat.format(date).toString();
 
         Wallet wallet = new Wallet (description, amount);
-        mDatabase.child(mAuth.getUid()).child("Wallet").setValue(wallet);
+        mDatabase.child(mAuth.getUid()).child("Wallet").child(strDate).setValue(wallet);
     }
 }
