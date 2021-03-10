@@ -19,6 +19,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.lcgg.lcggpay.ui.profile.ProfileFragment;
+import com.lcgg.lcggpay.ui.store.StoreFragment;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -57,22 +59,36 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
+        case R.id.profile:
+            //add the function to perform here
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment, new ProfileFragment())
+                    .commit();
+            return(true);
 
         case R.id.exit:
             //add the function to perform here
-            mAuth.getInstance().signOut();
 
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setIcon(ContextCompat.getDrawable(MainActivity.this, R.mipmap.ic_logo));
             builder.setTitle("LCGG Pay");
-            builder.setMessage("");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setMessage("Logging Off?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     // You don't have to do anything here if you just
                     // want it dismissed when clicked
+                    mAuth.getInstance().signOut();
+
                     Intent intent = new Intent(MainActivity.this, Login.class);
                     startActivity(intent);
                     finish();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
                 }
             });
             builder.create().show();
