@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
         case R.id.exit:
             //add the function to perform here
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setIcon(ContextCompat.getDrawable(MainActivity.this, R.mipmap.ic_logo));
-            builder.setTitle("LCGG Pay");
-            builder.setMessage("Logging Off?");
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
+                .setIcon(ContextCompat.getDrawable(MainActivity.this, R.mipmap.ic_logo))
+                .setTitle("LCGG Pay")
+                .setMessage("Logging Off?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     // You don't have to do anything here if you just
                     // want it dismissed when clicked
@@ -81,16 +81,18 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Login.class);
                     startActivity(intent);
                     finish();
-                }
-            });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
                     // You don't have to do anything here if you just
                     // want it dismissed when clicked
-                }
-            });
-            builder.create().show();
+                    }
+                });
+
+            builder.create()
+                    .show();
 
             return(true);
         }
