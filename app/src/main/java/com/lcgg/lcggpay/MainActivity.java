@@ -1,23 +1,31 @@
 package com.lcgg.lcggpay;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,43 @@ public class MainActivity extends AppCompatActivity {
         AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
                 Analytics.class, Crashes.class);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_nav_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()) {
+
+        case R.id.exit:
+            //add the function to perform here
+            mAuth.getInstance().signOut();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setIcon(ContextCompat.getDrawable(MainActivity.this, R.mipmap.ic_logo));
+            builder.setTitle("LCGG Pay");
+            builder.setMessage("");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // You don't have to do anything here if you just
+                    // want it dismissed when clicked
+                    Intent intent = new Intent(MainActivity.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            builder.create().show();
+
+            return(true);
+        }
+        return(super.onOptionsItemSelected(item));
+    }
+
 
     @Override
     public void onBackPressed() {
