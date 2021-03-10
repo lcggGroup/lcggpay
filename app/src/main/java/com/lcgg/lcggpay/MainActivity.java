@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         case R.id.exit:
             //add the function to perform here
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this)
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.question_dialog)
                 .setIcon(ContextCompat.getDrawable(MainActivity.this, R.mipmap.ic_logo))
                 .setTitle("LCGG Pay")
                 .setMessage("Logging Off?")
