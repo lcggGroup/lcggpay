@@ -46,27 +46,30 @@ public class Reset extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (TextUtils.isEmpty(txt_email.getText().toString())) {
-                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
-                    return;
+                    txt_email.setError("Enter your registered email id");
+                    txt_email.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-
-                mAuth.sendPasswordResetEmail(txt_email.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    txt_message.setText("We have sent you instructions to reset your password!");
-                                    txt_notice.setVisibility(View.GONE);
-                                    txt_email.setVisibility(View.GONE);
-                                    btnSubmit.setVisibility(View.GONE);
-                                    btnCancel.setText("Done");
+                else if (!TextUtils.isEmpty(txt_email.getText().toString())) {
+                    txt_email.setBackgroundResource(R.drawable.txt_design_box);
+                }
+                else{
+                    mAuth.sendPasswordResetEmail(txt_email.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        txt_message.setText("We have sent you instructions to reset your password!");
+                                        txt_notice.setVisibility(View.GONE);
+                                        txt_email.setVisibility(View.GONE);
+                                        btnSubmit.setVisibility(View.GONE);
+                                        btnCancel.setText("Done");
+                                    }
+                                    else {
+                                        Toast.makeText(Reset.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                                else {
-                                    Toast.makeText(Reset.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-
+                            });
+                }
             }
         });
 

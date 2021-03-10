@@ -70,12 +70,23 @@ public class Login extends AppCompatActivity {
                                     if (!task.isSuccessful()) {
                                         // there was an error
                                         if (!isEmailValid(txt_username.getText().toString())) {
-                                            txt_username.setError("Enter your registered email address");
+                                            txt_username.setError("Enter valid email address");
+                                            txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
+                                        }
+                                        else if (isEmailValid(txt_username.getText().toString())) {
+                                            txt_username.setBackgroundResource(R.drawable.txt_design_box);
                                         }
                                         if (txt_password.getText().toString().length() < 6 ) {
                                             txt_password.setError("Minimum length is 7.");
+                                            txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
+                                        }
+                                        else if (txt_password.getText().toString().length() >= 6 ) {
+                                            txt_password.setError("Minimum length is 7.");
+                                            txt_password.setBackgroundResource(R.drawable.txt_design_box);
                                         }
                                         else {
+                                            txt_username.setBackgroundResource(R.drawable.txt_design_box);
+                                            txt_password.setBackgroundResource(R.drawable.txt_design_box);
                                             Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
                                         }
                                     } else {
