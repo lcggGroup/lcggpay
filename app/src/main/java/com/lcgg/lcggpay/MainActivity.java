@@ -91,8 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-            builder.create()
-                    .show();
+            builder.create().show();
 
             return(true);
         }
