@@ -139,7 +139,7 @@ public class Register extends AppCompatActivity {
 
                                     } else {
                                         writeNewUser(txt_reg_username.getText().toString(),txt_reg_firstName.getText().toString(),txt_reg_lastName.getText().toString());
-                                        writeNewWallet("Initial Amount", "0");
+                                        writeNewWallet("Initial Amount", 0.0);
 
                                         startActivity(new Intent(Register.this, MainActivity.class));
                                         finish();
@@ -163,12 +163,13 @@ public class Register extends AppCompatActivity {
         mDatabase.child(mAuth.getUid()).child("Profile").setValue(profile);
     }
 
-    public void writeNewWallet(String description, String amount){
+    public void writeNewWallet(String description, Double amount){
         Date date = new Date();
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         String strDate = dateFormat.format(date).toString();
 
         Wallet wallet = new Wallet (description, amount);
+        mDatabase.child(mAuth.getUid()).child("Wallet").child("amount").setValue(amount);
         mDatabase.child(mAuth.getUid()).child("Wallet").child("transactions").child(strDate).setValue(wallet);
     }
 }
