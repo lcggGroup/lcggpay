@@ -16,13 +16,13 @@
         android:name="com.lcgg.lcggpay.ui.pay.PayFragment"
         android:label="@string/title_pay"
         tools:layout="@layout/fragment_pay" />
-
+<!--
     <fragment
         android:id="@+id/navigation_store"
         android:name="com.lcgg.lcggpay.ui.store.StoreFragment"
         android:label="@string/title_store"
         tools:layout="@layout/fragment_store" />
-
+-->
     <fragment
         android:id="@+id/navigation_wallet"
         android:name="com.lcgg.lcggpay.ui.wallet.WalletFragment"

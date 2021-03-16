@@ -14,4 +14,21 @@ public class Wallet {
         this.amount = amount;
     }
 
+    //Get
+    public String getDescription() {
+        return description;
+    }
+
+    //Set
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
 }

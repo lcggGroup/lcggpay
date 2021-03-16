@@ -10,12 +10,12 @@
         android:id="@+id/navigation_pay"
         android:icon="@drawable/ic_qrcode_scanner"
         android:title="@string/title_pay" />
-
+<!--
     <item
         android:id="@+id/navigation_store"
         android:icon="@drawable/ic_store"
         android:title="@string/title_store" />
-
+-->
     <item
         android:id="@+id/navigation_wallet"
         android:icon="@drawable/ic_wallet"

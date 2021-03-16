@@ -1,10 +1,16 @@
 package com.lcgg.lcggpay;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -12,15 +18,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.lcgg.lcggpay.ui.home.HomeFragment;
+import com.lcgg.lcggpay.ui.pay.PayFragment;
 import com.lcgg.lcggpay.ui.profile.ProfileFragment;
 import com.lcgg.lcggpay.ui.store.StoreFragment;
+import com.lcgg.lcggpay.ui.wallet.WalletFragment;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -38,14 +52,15 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_pay, R.id.navigation_store, R.id.navigation_wallet)
-                .build();
+               R.id.navigation_home, R.id.navigation_pay, R.id.navigation_wallet)
+               .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
         AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
                 Analytics.class, Crashes.class);
+
     }
 
     @Override
@@ -67,32 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         case R.id.exit:
             //add the function to perform here
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.question_dialog)
-                .setIcon(ContextCompat.getDrawable(MainActivity.this, R.mipmap.ic_logo))
-                .setTitle("LCGG Pay")
-                .setMessage("Logging Off?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    // You don't have to do anything here if you just
-                    // want it dismissed when clicked
-                    mAuth.getInstance().signOut();
-
-                    Intent intent = new Intent(MainActivity.this, Login.class);
-                    startActivity(intent);
-                    finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int id) {
-                    // You don't have to do anything here if you just
-                    // want it dismissed when clicked
-                    }
-                });
-
-            builder.create().show();
-
+            mAuth.getInstance().signOut();
+            //Intent intent = new Intent(MainActivity.this, Login.class);
+            //startActivity(intent);
+            finish();
             return(true);
         }
         return(super.onOptionsItemSelected(item));
@@ -105,6 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data);
     }
 }
