@@ -126,13 +126,13 @@ public class Register extends AppCompatActivity {
                     txt_reg_lastName.setBackgroundResource(R.drawable.txt_design_box);
                 }
 
-                if (!TextUtils.isEmpty(txt_reg_username.getText().toString()) ||
-                        isEmailValid(txt_reg_username.getText().toString()) ||
-                    !TextUtils.isEmpty(txt_reg_password.getText().toString()) ||
-                    txt_reg_password.getText().toString().length() >= 6 ||
-                    !TextUtils.isEmpty(txt_reg_retype_pass.getText().toString()) ||
-                    txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()) ||
-                    !TextUtils.isEmpty(txt_reg_firstName.getText().toString()) ||
+                if (!TextUtils.isEmpty(txt_reg_username.getText().toString()) &&
+                        isEmailValid(txt_reg_username.getText().toString()) &&
+                    !TextUtils.isEmpty(txt_reg_password.getText().toString()) &&
+                    txt_reg_password.getText().toString().length() >= 6 &&
+                    !TextUtils.isEmpty(txt_reg_retype_pass.getText().toString()) &&
+                    txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()) &&
+                    !TextUtils.isEmpty(txt_reg_firstName.getText().toString()) &&
                     !TextUtils.isEmpty(txt_reg_lastName.getText().toString())) {
 
                     mAuth.createUserWithEmailAndPassword(txt_reg_username.getText().toString(), txt_reg_password.getText().toString())
