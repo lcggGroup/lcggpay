@@ -95,7 +95,7 @@ public class Register extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
-                    txt_reg_retype_pass.setError("Confirm your password");
+                    txt_reg_retype_pass.setError("Confirm password must not be empty");
                     txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
                 else if (!TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
@@ -103,8 +103,8 @@ public class Register extends AppCompatActivity {
                 }
 
                 if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
-                    txt_reg_password.setError("Your password must be the same with your confirmed password");
-                    txt_reg_password.setBackgroundResource(R.drawable.txt_design_box_red);
+                    txt_reg_retype_pass.setError("Your password must be the same with your confirmed password");
+                    txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
                 else if (txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box);
@@ -165,9 +165,6 @@ public class Register extends AppCompatActivity {
                                 }
                             });
                 }
-
-
-
             }
         });
 
