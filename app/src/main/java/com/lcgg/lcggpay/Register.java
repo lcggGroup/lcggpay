@@ -73,31 +73,60 @@ public class Register extends AppCompatActivity {
                     txt_reg_username.setError("Enter valid email address for your username");
                     txt_reg_username.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (TextUtils.isEmpty(txt_reg_password.getText().toString())) {
+                else if (!TextUtils.isEmpty(txt_reg_username.getText().toString()) ||
+                        isEmailValid(txt_reg_username.getText().toString())) {
+                    txt_reg_username.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (TextUtils.isEmpty(txt_reg_password.getText().toString())) {
                     txt_reg_password.setError("Enter your password");
                     txt_reg_password.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (txt_reg_password.getText().toString().length() < 6 ) {
+                else if (!TextUtils.isEmpty(txt_reg_password.getText().toString())) {
+                    txt_reg_password.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (txt_reg_password.getText().toString().length() < 6 ) {
                     txt_reg_password.setError("Minimum length is 7.");
                     txt_reg_password.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
+                else if (txt_reg_password.getText().toString().length() >= 6 ) {
+                    txt_reg_password.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_retype_pass.setError("Confirm your password");
                     txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
+                else if (!TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
+                    txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (!txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_password.setError("Your password must be the same with your confirmed password");
                     txt_reg_password.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (TextUtils.isEmpty(txt_reg_firstName.getText().toString())) {
+                else if (txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
+                    txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (TextUtils.isEmpty(txt_reg_firstName.getText().toString())) {
                     txt_reg_firstName.setError("Enter your First Name");
                     txt_reg_firstName.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (TextUtils.isEmpty(txt_reg_lastName.getText().toString())) {
+                else if (!TextUtils.isEmpty(txt_reg_firstName.getText().toString())) {
+                    txt_reg_firstName.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (TextUtils.isEmpty(txt_reg_lastName.getText().toString())) {
                     txt_reg_lastName.setError("Enter your Last Name");
                     txt_reg_lastName.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (!TextUtils.isEmpty(txt_reg_username.getText().toString()) ||
+                else if (!TextUtils.isEmpty(txt_reg_lastName.getText().toString())) {
+                    txt_reg_lastName.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (!TextUtils.isEmpty(txt_reg_username.getText().toString()) ||
                         isEmailValid(txt_reg_username.getText().toString()) ||
                     !TextUtils.isEmpty(txt_reg_password.getText().toString()) ||
                     txt_reg_password.getText().toString().length() >= 6 ||
@@ -105,14 +134,6 @@ public class Register extends AppCompatActivity {
                     txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()) ||
                     !TextUtils.isEmpty(txt_reg_firstName.getText().toString()) ||
                     !TextUtils.isEmpty(txt_reg_lastName.getText().toString())) {
-
-                    txt_reg_username.setBackgroundResource(R.drawable.txt_design_box);
-                    txt_reg_password.setBackgroundResource(R.drawable.txt_design_box);
-                    txt_reg_password.setBackgroundResource(R.drawable.txt_design_box);
-                    txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box);
-                    txt_reg_password.setBackgroundResource(R.drawable.txt_design_box);
-                    txt_reg_firstName.setBackgroundResource(R.drawable.txt_design_box);
-                    txt_reg_lastName.setBackgroundResource(R.drawable.txt_design_box);
 
                     mAuth.createUserWithEmailAndPassword(txt_reg_username.getText().toString(), txt_reg_password.getText().toString())
                             .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {

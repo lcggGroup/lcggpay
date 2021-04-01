@@ -51,18 +51,23 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (txt_username.getText().toString().isEmpty()) {
+                if (TextUtils.isEmpty(txt_username.getText().toString())) {
                     txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
                     txt_username.setError("Enter the registered email address as your username.");
                 }
-                if (txt_password.getText().toString().isEmpty()) {
+                else if (!TextUtils.isEmpty(txt_username.getText().toString())) {
+                    txt_username.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (TextUtils.isEmpty(txt_password.getText().toString())) {
                     txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
                     txt_password.setError("Enter your password");
                 }
-                else if (!(txt_username.getText().toString().isEmpty()) && !(txt_password.getText().toString().isEmpty())){
-                    txt_username.setBackgroundResource(R.drawable.txt_design_box);
+                else if (!TextUtils.isEmpty(txt_password.getText().toString())) {
                     txt_password.setBackgroundResource(R.drawable.txt_design_box);
+                }
 
+                if (!(TextUtils.isEmpty(txt_username.getText().toString())) && !(TextUtils.isEmpty(txt_password.getText().toString()))){
                     mAuth.signInWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
                             .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                                 @Override
