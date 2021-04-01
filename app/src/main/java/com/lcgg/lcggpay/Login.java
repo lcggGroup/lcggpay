@@ -51,17 +51,15 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) {
+                if (txt_username.getText().toString().isEmpty()) {
                     txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
                     txt_username.setError("Enter the registered email address as your username.");
                 }
-                if (txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null) {
+                if (txt_password.getText().toString().isEmpty()) {
                     txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
                     txt_password.setError("Enter your password");
                 }
-                else if (!(txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) &&
-                        !(txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null)){
-
+                else if (!(txt_username.getText().toString().isEmpty()) && !(txt_password.getText().toString().isEmpty())){
                     txt_username.setBackgroundResource(R.drawable.txt_design_box);
                     txt_password.setBackgroundResource(R.drawable.txt_design_box);
 
@@ -80,12 +78,11 @@ public class Login extends AppCompatActivity {
                                             txt_username.setError("Enter valid email address for your username");
                                             txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
                                         }
-                                        if (TextUtils.isEmpty(txt_password.getText().toString()) ||
-                                            txt_password.getText().toString().length() < 6 ) {
-                                            txt_password.setError("Minimum length is 7.");
+                                        if (TextUtils.isEmpty(txt_password.getText().toString())) {
+                                            txt_password.setError("Enter your password.");
                                             txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
                                         }
-                                        Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Login.this, task.getException().getMessage() , Toast.LENGTH_LONG).show();
 
                                     } else {
                                         txt_username.setBackgroundResource(R.drawable.txt_design_box);

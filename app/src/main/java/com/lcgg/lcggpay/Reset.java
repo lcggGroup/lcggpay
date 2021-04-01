@@ -1,8 +1,10 @@
 package com.lcgg.lcggpay;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,7 +47,8 @@ public class Reset extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (TextUtils.isEmpty(txt_email.getText().toString())) {
+                if (TextUtils.isEmpty(txt_email.getText().toString()) ||
+                    !isEmailValid(txt_email.getText().toString())) {
                     txt_email.setError("Enter your registered email id");
                     txt_email.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
@@ -64,7 +67,7 @@ public class Reset extends AppCompatActivity {
                                         btnCancel.setText("Done");
                                     }
                                     else {
-                                        Toast.makeText(Reset.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Reset.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -78,5 +81,9 @@ public class Reset extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

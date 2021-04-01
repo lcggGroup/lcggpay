@@ -133,8 +133,8 @@ public class Register extends AppCompatActivity {
                                             }
                                         });
                                         builder.create().show();
-
-                                    } else {
+                                    }
+                                    else {
                                         writeNewUser(txt_reg_username.getText().toString(),txt_reg_firstName.getText().toString(),txt_reg_lastName.getText().toString());
                                         writeNewWallet();
 
