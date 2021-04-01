@@ -1,8 +1,10 @@
 package com.lcgg.lcggpay;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -51,11 +53,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (TextUtils.isEmpty(txt_username.getText().toString())) {
+                if (TextUtils.isEmpty(txt_username.getText().toString()) ||
+                        !isEmailValid(txt_username.getText().toString())) {
+                    txt_username.setError("Enter valid email address for your username");
                     txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
-                    txt_username.setError("Enter the registered email address as your username.");
                 }
-                else if (!TextUtils.isEmpty(txt_username.getText().toString())) {
+                else if (!TextUtils.isEmpty(txt_username.getText().toString()) ||
+                        isEmailValid(txt_username.getText().toString())) {
                     txt_username.setBackgroundResource(R.drawable.txt_design_box);
                 }
 
@@ -78,20 +82,18 @@ public class Login extends AppCompatActivity {
 
                                     if (!task.isSuccessful()) {
                                         // there was an error
-                                        if (TextUtils.isEmpty(txt_username.getText().toString()) ||
-                                            !isEmailValid(txt_username.getText().toString())) {
-                                            txt_username.setError("Enter valid email address for your username");
-                                            txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
-                                        }
-                                        if (TextUtils.isEmpty(txt_password.getText().toString())) {
-                                            txt_password.setError("Enter your password.");
-                                            txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
-                                        }
-                                        Toast.makeText(Login.this, task.getException().getMessage() , Toast.LENGTH_LONG).show();
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Login.this, R.style.question_dialog);
+                                        builder.setTitle("Login");
+                                        builder.setMessage(task.getException().getMessage());
+                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                // You don't have to do anything here if you just
+                                                // want it dismissed when clicked
+                                            }
+                                        });
+                                        builder.create().show();
 
                                     } else {
-                                        txt_username.setBackgroundResource(R.drawable.txt_design_box);
-                                        txt_password.setBackgroundResource(R.drawable.txt_design_box);
 
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         startActivity(intent);

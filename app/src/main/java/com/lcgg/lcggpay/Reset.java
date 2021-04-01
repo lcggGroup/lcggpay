@@ -67,7 +67,16 @@ public class Reset extends AppCompatActivity {
                                         btnCancel.setText("Done");
                                     }
                                     else {
-                                        Toast.makeText(Reset.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Reset.this, R.style.question_dialog);
+                                        builder.setTitle("Reset");
+                                        builder.setMessage(task.getException().getMessage());
+                                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                // You don't have to do anything here if you just
+                                                // want it dismissed when clicked
+                                            }
+                                        });
+                                        builder.create().show();
                                     }
                                 }
                             });

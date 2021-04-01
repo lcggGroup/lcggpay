@@ -145,7 +145,7 @@ public class Register extends AppCompatActivity {
                                     if (!task.isSuccessful()) {
 
                                         AlertDialog.Builder builder = new AlertDialog.Builder(Register.this, R.style.question_dialog);
-                                        builder.setTitle("Authentication Failed");
+                                        builder.setTitle("Register");
                                         builder.setMessage(task.getException().getMessage());
                                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
