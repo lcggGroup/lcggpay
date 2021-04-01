@@ -36,12 +36,12 @@ public class PayFragment extends AppCompatActivity {
 
         barcodeView = (CompoundBarcodeView) findViewById(R.id.barcode_scanner);
 
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        integrator.setPrompt(null);
-        integrator.setBeepEnabled(false);
-        integrator.setBarcodeImageEnabled(true);
-        integrator.initiateScan();
+        //IntentIntegrator integrator = new IntentIntegrator(this);
+        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        //integrator.setPrompt(null);
+        //integrator.setBeepEnabled(false);
+        //integrator.setBarcodeImageEnabled(true);
+        //integrator.initiateScan();
     }
 
     @Override
