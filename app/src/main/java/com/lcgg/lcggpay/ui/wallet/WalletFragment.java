@@ -1,5 +1,6 @@
 package com.lcgg.lcggpay.ui.wallet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,8 @@ public class WalletFragment extends Fragment {
     Button addFunds;
     Button transferFunds;
     Button withdrawFunds;
+    Intent intent;
+
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -66,6 +69,9 @@ public class WalletFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Add", Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(), WalletVerificationPage.class);
+                intent.putExtra("valueActivity", "Add");
+                startActivity(intent);
             }
         });
 
@@ -73,6 +79,9 @@ public class WalletFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Transfer", Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(), AddAmountActivity.class);
+                intent.putExtra("valueActivity", "Transfer");
+                startActivity(intent);
             }
         });
 
@@ -80,6 +89,9 @@ public class WalletFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Withdraw", Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(), WalletVerificationPage.class);
+                intent.putExtra("valueActivity", "Withdraw");
+                startActivity(intent);
             }
         });
 
