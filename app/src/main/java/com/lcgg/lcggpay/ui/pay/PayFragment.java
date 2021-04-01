@@ -35,13 +35,6 @@ public class PayFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_pay);
 
         barcodeView = (CompoundBarcodeView) findViewById(R.id.barcode_scanner);
-
-        //IntentIntegrator integrator = new IntentIntegrator(this);
-        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        //integrator.setPrompt(null);
-        //integrator.setBeepEnabled(false);
-        //integrator.setBarcodeImageEnabled(true);
-        //integrator.initiateScan();
     }
 
     @Override
@@ -63,23 +56,5 @@ public class PayFragment extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                //ToDo: Create new page for verified transaction
-                intent = new Intent(this, VerificationPage.class);
-                intent.putExtra("UserId", result.getContents());
-                startActivity(intent);
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
+
 }
