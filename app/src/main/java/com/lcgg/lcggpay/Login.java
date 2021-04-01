@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,13 +52,18 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) {
+                    txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
                     txt_username.setError("Enter the registered email address as your username.");
                 }
                 if (txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null) {
+                    txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
                     txt_password.setError("Enter your password");
                 }
                 else if (!(txt_username.getText().toString().isEmpty() || txt_username.getText().toString() == null) &&
                         !(txt_password.getText().toString().isEmpty() || txt_password.getText().toString() == null)){
+
+                    txt_username.setBackgroundResource(R.drawable.txt_design_box);
+                    txt_password.setBackgroundResource(R.drawable.txt_design_box);
 
                     mAuth.signInWithEmailAndPassword(txt_username.getText().toString(), txt_password.getText().toString())
                             .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
@@ -69,27 +75,22 @@ public class Login extends AppCompatActivity {
 
                                     if (!task.isSuccessful()) {
                                         // there was an error
-                                        if (!isEmailValid(txt_username.getText().toString())) {
-                                            txt_username.setError("Enter valid email address");
+                                        if (TextUtils.isEmpty(txt_username.getText().toString()) ||
+                                            !isEmailValid(txt_username.getText().toString())) {
+                                            txt_username.setError("Enter valid email address for your username");
                                             txt_username.setBackgroundResource(R.drawable.txt_design_box_red);
                                         }
-                                        else if (isEmailValid(txt_username.getText().toString())) {
-                                            txt_username.setBackgroundResource(R.drawable.txt_design_box);
-                                        }
-                                        if (txt_password.getText().toString().length() < 6 ) {
+                                        if (TextUtils.isEmpty(txt_password.getText().toString()) ||
+                                            txt_password.getText().toString().length() < 6 ) {
                                             txt_password.setError("Minimum length is 7.");
                                             txt_password.setBackgroundResource(R.drawable.txt_design_box_red);
                                         }
-                                        else if (txt_password.getText().toString().length() >= 6 ) {
-                                            txt_password.setError("Minimum length is 7.");
-                                            txt_password.setBackgroundResource(R.drawable.txt_design_box);
-                                        }
-                                        else {
-                                            txt_username.setBackgroundResource(R.drawable.txt_design_box);
-                                            txt_password.setBackgroundResource(R.drawable.txt_design_box);
-                                            Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
-                                        }
+                                        Toast.makeText(Login.this, "Login failed" , Toast.LENGTH_LONG).show();
+
                                     } else {
+                                        txt_username.setBackgroundResource(R.drawable.txt_design_box);
+                                        txt_password.setBackgroundResource(R.drawable.txt_design_box);
+
                                         Intent intent = new Intent(Login.this, MainActivity.class);
                                         startActivity(intent);
                                         finish();

@@ -51,8 +51,7 @@ public class Reset extends AppCompatActivity {
                 }
                 else if (!TextUtils.isEmpty(txt_email.getText().toString())) {
                     txt_email.setBackgroundResource(R.drawable.txt_design_box);
-                }
-                else{
+
                     mAuth.sendPasswordResetEmail(txt_email.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
