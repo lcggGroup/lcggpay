@@ -38,18 +38,6 @@ public class PayFragment extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        barcodeView.resume();
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        barcodeView.pause();
-        super.onPause();
-    }
-
-    @Override
     public void onBackPressed() {
         super.onBackPressed();
         intent = new Intent(this, MainActivity.class);
