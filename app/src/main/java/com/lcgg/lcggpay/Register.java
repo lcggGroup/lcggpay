@@ -106,7 +106,9 @@ public class Register extends AppCompatActivity {
                     txt_reg_retype_pass.setError("Your password must be the same with your confirmed password");
                     txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
-                else if (txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString())) {
+                else if (txt_reg_password.getText().toString().equals(txt_reg_retype_pass.getText().toString()) &&
+                    !TextUtils.isEmpty(txt_reg_password.getText().toString()) &&
+                    !TextUtils.isEmpty(txt_reg_retype_pass.getText().toString())) {
                     txt_reg_retype_pass.setBackgroundResource(R.drawable.txt_design_box);
                 }
 
@@ -127,7 +129,7 @@ public class Register extends AppCompatActivity {
                 }
 
                 if (!TextUtils.isEmpty(txt_reg_username.getText().toString()) &&
-                        isEmailValid(txt_reg_username.getText().toString()) &&
+                    isEmailValid(txt_reg_username.getText().toString()) &&
                     !TextUtils.isEmpty(txt_reg_password.getText().toString()) &&
                     txt_reg_password.getText().toString().length() >= 6 &&
                     !TextUtils.isEmpty(txt_reg_retype_pass.getText().toString()) &&
