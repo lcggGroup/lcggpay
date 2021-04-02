@@ -27,10 +27,24 @@ import com.lcgg.lcggpay.R;
 
 import java.util.List;
 
-public abstract class PayFragment extends Fragment implements View.OnClickListener{
+public class PayFragment extends Fragment implements View.OnClickListener{
 
     Intent intent;
     private CompoundBarcodeView barcodeView;
+
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        if (container == null) {
+            return null;
+        }
+
+        View root = inflater.inflate(R.layout.fragment_pay, container, false);
+
+        barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
+        barcodeView.decodeContinuous(callback);
+
+        return root;
+    }
 
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
@@ -48,18 +62,9 @@ public abstract class PayFragment extends Fragment implements View.OnClickListen
         }
     };
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        if (container == null) {
-            return null;
-        }
+    @Override
+    public void onClick(View v) {
 
-        View root = inflater.inflate(R.layout.fragment_pay, container, false);
-
-        barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
-        barcodeView.decodeContinuous(callback);
-
-        return root;
     }
 
     @Override
