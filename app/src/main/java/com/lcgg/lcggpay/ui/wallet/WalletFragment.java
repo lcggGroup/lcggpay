@@ -41,8 +41,6 @@ public class WalletFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
-        mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         txtBalance = root.findViewById(R.id.wallet_balance);
 
@@ -50,48 +48,25 @@ public class WalletFragment extends Fragment {
         transferFunds = root.findViewById(R.id.btn_transfer);
         withdrawFunds = root.findViewById(R.id.btn_withdraw);
 
-        //Get Amount - User
-        mDatabase.child(mAuth.getUid()).child("Wallet").getRef().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Wallet wallet = postSnapshot.getValue(Wallet.class);
-                    txtBalance.setText(wallet.getAmount().toString());
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         addFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Add", Toast.LENGTH_SHORT).show();
-                intent = new Intent(getActivity(), WalletVerificationPage.class);
-                intent.putExtra("valueActivity", "Add");
-                startActivity(intent);
+
             }
         });
 
         transferFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Transfer", Toast.LENGTH_SHORT).show();
-                intent = new Intent(getActivity(), AddAmountActivity.class);
-                intent.putExtra("valueActivity", "Transfer");
-                startActivity(intent);
+
             }
         });
 
         withdrawFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Withdraw", Toast.LENGTH_SHORT).show();
-                intent = new Intent(getActivity(), WalletVerificationPage.class);
-                intent.putExtra("valueActivity", "Withdraw");
-                startActivity(intent);
+
             }
         });
 

@@ -32,6 +32,23 @@ public class PayFragment extends Fragment implements View.OnClickListener{
     Intent intent;
     private CompoundBarcodeView barcodeView;
 
+    private BarcodeCallback callback = new BarcodeCallback() {
+        @Override
+        public void barcodeResult(BarcodeResult result) {
+            //if (result.getText() != null) {
+            //    barcodeView.setStatusText(result.getText());
+            //}
+
+            //Do something with code result
+            Toast.makeText(getActivity(), result.getText(), Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void possibleResultPoints(List<ResultPoint> resultPoints) {
+
+        }
+    };
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         if (container == null) {
@@ -41,29 +58,14 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
 
         barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
+        barcodeView.decodeContinuous(callback);
 
         return root;
     }
 
-    private BarcodeCallback callback = new BarcodeCallback() {
-        @Override
-        public void barcodeResult(BarcodeResult result) {
-            if (result.getText() != null) {
-                barcodeView.setStatusText(result.getText());
-            }
-
-            //Do something with code result
-        }
-
-        @Override
-        public void possibleResultPoints(List<ResultPoint> resultPoints) {
-
-        }
-    };
-
     @Override
     public void onClick(View v) {
-        barcodeView.decodeContinuous(callback);
+
     }
 
     @Override
