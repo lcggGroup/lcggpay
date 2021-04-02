@@ -41,7 +41,6 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
 
         barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
-        barcodeView.decodeContinuous(callback);
 
         return root;
     }
@@ -64,7 +63,7 @@ public class PayFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
+        barcodeView.decodeContinuous(callback);
     }
 
     @Override
