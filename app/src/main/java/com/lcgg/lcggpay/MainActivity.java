@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        AppCenter.start(getApplication(), "a0dfaf0e-a308-4fde-bb0d-c83219f54eb3",
+        AppCenter.start(getApplication(), "dd277fa5-30df-4221-a334-5a2a952ff868",
                 Analytics.class, Crashes.class);
 
     }

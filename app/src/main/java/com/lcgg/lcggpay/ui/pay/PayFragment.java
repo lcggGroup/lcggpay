@@ -25,19 +25,52 @@ import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 
-public class PayFragment extends Fragment {
+import java.util.List;
+
+public abstract class PayFragment extends Fragment implements View.OnClickListener{
 
     Intent intent;
     private CompoundBarcodeView barcodeView;
 
+    private BarcodeCallback callback = new BarcodeCallback() {
+        @Override
+        public void barcodeResult(BarcodeResult result) {
+            if (result.getText() != null) {
+                barcodeView.setStatusText(result.getText());
+            }
+
+            //Do something with code result
+        }
+
+        @Override
+        public void possibleResultPoints(List<ResultPoint> resultPoints) {
+
+        }
+    };
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        if (container == null) {
+            return null;
+        }
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
 
         barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
+        barcodeView.decodeContinuous(callback);
 
         return root;
     }
 
+    @Override
+    public void onResume() {
+        barcodeView.resume();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        barcodeView.pause();
+        super.onPause();
+    }
 }
