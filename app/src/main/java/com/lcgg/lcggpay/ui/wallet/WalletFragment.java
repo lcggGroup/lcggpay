@@ -45,14 +45,11 @@ public class WalletFragment extends Fragment {
 
         txtBalance = root.findViewById(R.id.wallet_balance);
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.child("Wallet").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for (DataSnapshot child : snapshot.getChildren()) {
-                    Wallet wallet = child.getValue(Wallet.class);
-                    txtBalance.setText(wallet.amount.toString());
-                }
+                Wallet wallet = snapshot.getValue(Wallet.class);
+                txtBalance.setText(wallet.amount.toString());
             }
 
             @Override
