@@ -45,19 +45,6 @@ public class WalletFragment extends Fragment {
 
         txtBalance = root.findViewById(R.id.wallet_balance);
 
-        myRef.child("Wallet").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Wallet wallet = snapshot.getValue(Wallet.class);
-                txtBalance.setText(wallet.amount.toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         addFunds = root.findViewById(R.id.btn_add);
         transferFunds = root.findViewById(R.id.btn_transfer);
         withdrawFunds = root.findViewById(R.id.btn_withdraw);
