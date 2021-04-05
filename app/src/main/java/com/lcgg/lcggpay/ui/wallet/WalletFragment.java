@@ -45,7 +45,7 @@ public class WalletFragment extends Fragment {
 
         txtBalance = root.findViewById(R.id.wallet_balance);
 
-        myRef.child("Wallet").addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
