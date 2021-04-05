@@ -31,7 +31,7 @@ public class PayFragment extends Fragment implements View.OnClickListener{
 
     Intent intent;
     private CompoundBarcodeView barcodeView;
-    private IntentIntegrator integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
+    private IntentIntegrator integrator;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,10 +40,9 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         }
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
-
+        integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
-        barcodeView.initializeFromIntent(integrator.createScanIntent());
-        barcodeView.decodeContinuous(callback);
 
         return root;
     }
@@ -79,7 +78,9 @@ public class PayFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         integrator.initiateScan();
+        barcodeView.initializeFromIntent(integrator.createScanIntent());
+        barcodeView.decodeContinuous(callback);
+
     }
 }
