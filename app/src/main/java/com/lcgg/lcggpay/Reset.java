@@ -67,7 +67,7 @@ public class Reset extends AppCompatActivity {
                                         btnCancel.setText("Done");
                                     }
                                     else {
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(Reset.this, R.style.question_dialog);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Reset.this);
                                         builder.setTitle("Reset");
                                         builder.setMessage(task.getException().getMessage());
                                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

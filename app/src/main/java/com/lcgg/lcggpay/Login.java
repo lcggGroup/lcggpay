@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
 
                                     if (!task.isSuccessful()) {
                                         // there was an error
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(Login.this, R.style.question_dialog);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
                                         builder.setTitle("Login");
                                         builder.setMessage(task.getException().getMessage());
                                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

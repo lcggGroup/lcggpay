@@ -142,7 +142,7 @@ public class Register extends AppCompatActivity {
                                     // signed in user can be handled in the listener.
                                     if (!task.isSuccessful()) {
 
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this, R.style.question_dialog);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(Register.this);
                                         builder.setTitle("Register");
                                         builder.setMessage(task.getException().getMessage());
                                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
