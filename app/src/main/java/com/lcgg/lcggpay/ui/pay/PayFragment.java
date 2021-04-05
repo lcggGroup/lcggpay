@@ -46,6 +46,9 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
         integrator.initiateScan();
 
+        barcodeView.initializeFromIntent(integrator.createScanIntent());
+        barcodeView.decodeContinuous(callback);
+
         return root;
     }
 
@@ -80,8 +83,6 @@ public class PayFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        barcodeView.initializeFromIntent(integrator.createScanIntent());
-        barcodeView.decodeContinuous(callback);
 
     }
 }
