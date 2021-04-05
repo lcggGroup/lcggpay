@@ -19,8 +19,8 @@ android {
         applicationId "com.lcgg.lcggpay"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 4
-        versionName "4.0"
+        versionCode 80
+        versionName "4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
