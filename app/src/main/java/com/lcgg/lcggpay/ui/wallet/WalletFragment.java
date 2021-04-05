@@ -47,7 +47,7 @@ public class WalletFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Wallet wallet = snapshot.getValue(Wallet.class);
 
-                txtBalance.setText(String.format("%.2f", wallet.getAmount().toString()));
+                txtBalance.setText(wallet.getAmount().toString());
             }
 
             @Override
