@@ -46,6 +46,7 @@ public class WalletFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Wallet wallet = snapshot.getValue(Wallet.class);
+
                 txtBalance.setText(wallet.getAmount().toString());
             }
 
