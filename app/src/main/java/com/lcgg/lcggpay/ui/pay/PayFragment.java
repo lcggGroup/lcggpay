@@ -21,16 +21,17 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.BarcodeView;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 
 import java.util.List;
 
-public class PayFragment extends Fragment implements View.OnClickListener{
+public class PayFragment extends Fragment {
 
     Intent intent;
-    private CompoundBarcodeView barcodeView;
+    private BarcodeView barcodeView;
     private IntentIntegrator integrator;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,47 +41,26 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         }
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
+
         integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
+        integrator.initiateScan();
 
         return root;
     }
 
-    private BarcodeCallback callback = new BarcodeCallback() {
-        @Override
-        public void barcodeResult(BarcodeResult result) {
-            //if (result.getText() != null) {
-            //    barcodeView.setStatusText(result.getText());
-            //}
-
-            //Do something with code result
-            Toast.makeText(getActivity(), result.getText(), Toast.LENGTH_SHORT).show();
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getActivity(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
-
-        @Override
-        public void possibleResultPoints(List<ResultPoint> resultPoints) {
-
-        }
-    };
-
-    @Override
-    public void onResume() {
-        barcodeView.resume();
-        super.onResume();
     }
 
-    @Override
-    public void onPause() {
-        barcodeView.pause();
-        super.onPause();
-    }
-
-    @Override
-    public void onClick(View v) {
-        integrator.initiateScan();
-        barcodeView.initializeFromIntent(integrator.createScanIntent());
-        barcodeView.decodeContinuous(callback);
-
-    }
 }

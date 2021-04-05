@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.lcgg.lcggpay"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1714358885
         versionName "5"
