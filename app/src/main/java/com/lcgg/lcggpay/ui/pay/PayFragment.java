@@ -28,7 +28,7 @@ import com.lcgg.lcggpay.R;
 
 import java.util.List;
 
-public class PayFragment extends Fragment {
+public class PayFragment extends Fragment implements View.OnClickListener{
 
     Intent intent;
     private BarcodeView barcodeView;
@@ -44,9 +44,13 @@ public class PayFragment extends Fragment {
 
         integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
         integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        integrator.initiateScan();
 
         return root;
+    }
+
+    @Override
+    public void onClick(View v) {
+        integrator.initiateScan();
     }
 
     @Override
