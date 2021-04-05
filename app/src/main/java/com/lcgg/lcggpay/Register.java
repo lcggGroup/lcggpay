@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = database.getReference("profile");
+    private DatabaseReference myRef = database.getReference(mAuth.getUid());
 
 
     EditText txt_reg_username;
@@ -184,8 +184,20 @@ public class Register extends AppCompatActivity {
     }
 
     public void writeNewUser(String username, String firstName, String lastName) {
+
         Profile profile = new Profile (username, firstName, lastName);
-        mDatabase.child(mAuth.getUid()).child("Profile").setValue(profile);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myRef.child("Profile").setValue(profile);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     public void writeNewWallet(){
@@ -193,11 +205,21 @@ public class Register extends AppCompatActivity {
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         String strDate = dateFormat.format(date);
 
-        //Initial Value
-        mDatabase.child(mAuth.getUid()).child("Wallet").child("amount").setValue(0.0);
 
-        //Save transactions
-        mDatabase.child(mAuth.getUid()).child("Wallet").child("Transactions").child("Register").child("transactionDate").setValue(strDate);
-        mDatabase.child(mAuth.getUid()).child("Wallet").child("Transactions").child("Register").child("amount").setValue(0.0);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Initial Value
+                myRef.child("Wallet").child("amount").setValue(0.00);
+                //Save transactions
+                myRef.child("Wallet").child("Transactions").child("Register").child("transactionDate").setValue(strDate);
+                myRef.child("Wallet").child("Transactions").child("Register").child("amount").setValue(0.0);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
