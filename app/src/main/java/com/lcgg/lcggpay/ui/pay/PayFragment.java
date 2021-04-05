@@ -32,7 +32,7 @@ public class PayFragment extends Fragment {
 
     Intent intent;
     private BarcodeView barcodeView;
-    //private IntentIntegrator integrator;
+    private IntentIntegrator integrator;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,51 +41,13 @@ public class PayFragment extends Fragment {
         }
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
-        barcodeView = (BarcodeView) root.findViewById(R.id.barcode_scanner);
 
-        //integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
-        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        //integrator.initiateScan();
-
-        //barcodeView.initializeFromIntent(integrator.createScanIntent());
-        barcodeView.decodeContinuous(callback);
+        integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        integrator.initiateScan();
 
         return root;
     }
 
-    //@Override
-    //public void onClick(View view)
-    //{
-    //
-    //}
-
-    private BarcodeCallback callback = new BarcodeCallback() {
-        @Override
-        public void barcodeResult(BarcodeResult result) {
-            //if (result.getText() != null) {
-            //    barcodeView.setStatusText(result.getText());
-            //}
-
-            //Do something with code result
-            Toast.makeText(getActivity(), result.getText(), Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void possibleResultPoints(List<ResultPoint> resultPoints) {
-
-        }
-    };
-
-    @Override
-    public void onResume() {
-        //barcodeView.resume();
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        barcodeView.pause();
-        super.onPause();
-    }
 
 }
