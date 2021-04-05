@@ -34,15 +34,30 @@ public class WalletFragment extends Fragment {
     Intent intent;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef = database.getReference(mAuth.getUid());
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
+        mAuth = FirebaseAuth.getInstance();
 
         txtBalance = root.findViewById(R.id.wallet_balance);
+
+        myRef.child("Wallet").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+               Wallet wallet = snapshot.getValue(Wallet.class);
+               txtBalance.setText(wallet.amount.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         addFunds = root.findViewById(R.id.btn_add);
         transferFunds = root.findViewById(R.id.btn_transfer);

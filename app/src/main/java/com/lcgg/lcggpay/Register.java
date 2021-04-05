@@ -32,11 +32,8 @@ public class Register extends AppCompatActivity {
     private static final String TAG = "Register";
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef;
-
 
     EditText txt_reg_username;
     EditText txt_reg_password;
@@ -53,7 +50,6 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         txt_reg_username = findViewById(R.id.txt_reg_username);
         txt_reg_password = findViewById(R.id.txt_reg_password);
@@ -158,7 +154,6 @@ public class Register extends AppCompatActivity {
                                         builder.create().show();
                                     }
                                     else {
-                                        //ToDo: Not working
                                         myRef = database.getReference(mAuth.getUid());
                                         writeNewUser(txt_reg_username.getText().toString(),txt_reg_firstName.getText().toString(),txt_reg_lastName.getText().toString());
                                         writeNewWallet();
@@ -205,7 +200,6 @@ public class Register extends AppCompatActivity {
         Date date = new Date();
         DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         String strDate = dateFormat.format(date);
-
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
