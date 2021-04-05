@@ -21,17 +21,18 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
+import com.journeyapps.barcodescanner.BarcodeView;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 
 import java.util.List;
 
-public class PayFragment extends Fragment implements View.OnClickListener{
+public class PayFragment extends Fragment {
 
     Intent intent;
-    private CompoundBarcodeView barcodeView;
-    private IntentIntegrator integrator;
+    private BarcodeView barcodeView;
+    //private IntentIntegrator integrator;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,17 +41,23 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         }
 
         View root = inflater.inflate(R.layout.fragment_pay, container, false);
-        barcodeView = (CompoundBarcodeView) root.findViewById(R.id.barcode_scanner);
+        barcodeView = (BarcodeView) root.findViewById(R.id.barcode_scanner);
 
-        integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
-        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-        integrator.initiateScan();
+        //integrator = IntentIntegrator.forSupportFragment(PayFragment.this);
+        //integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+        //integrator.initiateScan();
 
-        barcodeView.initializeFromIntent(integrator.createScanIntent());
+        //barcodeView.initializeFromIntent(integrator.createScanIntent());
         barcodeView.decodeContinuous(callback);
 
         return root;
     }
+
+    //@Override
+    //public void onClick(View view)
+    //{
+    //
+    //}
 
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
@@ -81,8 +88,4 @@ public class PayFragment extends Fragment implements View.OnClickListener{
         super.onPause();
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }
