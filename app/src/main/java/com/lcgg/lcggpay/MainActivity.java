@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         case R.id.exit:
             //add the function to perform here
             mAuth.getInstance().signOut();
-            //Intent intent = new Intent(MainActivity.this, Login.class);
-            //startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
             finish();
             return(true);
         }
