@@ -13,6 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.Wallet;
 
@@ -23,12 +29,32 @@ public class WalletFragment extends Fragment {
     Button transferFunds;
     Button withdrawFunds;
 
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+        myRef = database.getReference(mAuth.getUid()).child("Wallet");
 
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
 
         txtBalance = root.findViewById(R.id.wallet_balance);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Wallet wallet = snapshot.getValue(Wallet.class);
+
+                txtBalance.setText(wallet.getAmount().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         addFunds = root.findViewById(R.id.btn_add);
         transferFunds = root.findViewById(R.id.btn_transfer);
