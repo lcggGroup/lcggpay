@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef = database.getReference(mAuth.getUid());
+    private DatabaseReference myRef;
 
 
     EditText txt_reg_username;
@@ -159,6 +159,7 @@ public class Register extends AppCompatActivity {
                                     }
                                     else {
                                         //ToDo: Not working
+                                        myRef = database.getReference(mAuth.getUid());
                                         writeNewUser(txt_reg_username.getText().toString(),txt_reg_firstName.getText().toString(),txt_reg_lastName.getText().toString());
                                         writeNewWallet();
 
