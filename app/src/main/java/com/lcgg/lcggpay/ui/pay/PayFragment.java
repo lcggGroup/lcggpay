@@ -23,6 +23,7 @@ import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.BarcodeView;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
+import com.lcgg.lcggpay.Login;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 
@@ -55,7 +56,8 @@ public class PayFragment extends Fragment {
         if(result != null) {
             if(result.getContents() == null) {
                 //Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show();
-                getActivity().onBackPressed();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(getActivity(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
