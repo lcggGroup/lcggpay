@@ -56,7 +56,8 @@ public class ProfileFragment extends AppCompatActivity {
 
         switch(item.getItemId()) {
             case R.id.home:
-                finish();
+                intent = new Intent(ProfileFragment.this, MainActivity.class);
+                startActivity(intent);
                 return(true);
 
             case R.id.exit:
