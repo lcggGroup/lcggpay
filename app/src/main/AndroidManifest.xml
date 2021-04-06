@@ -17,6 +17,9 @@
         android:hardwareAccelerated="true"
         android:theme="@style/Theme.LCGGPay">
         <activity
+            android:name=".ui.profile.ProfileFragment"
+            android:label="Profile"/>
+        <activity
             android:label="Register"
             android:name=".Register"/>
         <activity
