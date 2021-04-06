@@ -56,11 +56,12 @@ public class ProfileFragment extends AppCompatActivity {
         switch(item.getItemId()) {
             case R.id.home:
                 //add the function to perform here
-                getSupportFragmentManager().beginTransaction()
-                .replace(R.id.nav_host_fragment, new HomeFragment())
-                .commit();
+                //getSupportFragmentManager().beginTransaction()
+                //.replace(R.id.nav_host_fragment, new HomeFragment())
+                //.commit();
                 //intent = new Intent(ProfileFragment.this, MainActivity.class);
                 //startActivity(intent);
+                finish();
                 return(true);
 
             case R.id.exit:
