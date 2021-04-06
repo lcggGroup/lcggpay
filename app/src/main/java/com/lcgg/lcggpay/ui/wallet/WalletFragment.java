@@ -96,7 +96,7 @@ public class WalletFragment extends Fragment {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if(result.getContents() == null) {
-                Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getActivity(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
