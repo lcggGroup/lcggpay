@@ -11,7 +11,7 @@
         <menu>
             <item
                 android:id="@+id/home"
-                android:icon="@drawable/ic_baseline_person_24"
+                android:icon="@drawable/ic_home_black_24dp"
                 android:iconTint="@color/black"
                 android:title="Home">
             </item>
