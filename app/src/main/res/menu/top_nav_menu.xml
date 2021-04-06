@@ -12,13 +12,11 @@
             <item
                 android:id="@+id/profile"
                 android:icon="@drawable/ic_baseline_settings_24"
-                android:iconTint="@android:color/black"
                 android:title="Settings">
             </item>
             <item
                 android:id="@+id/exit"
                 android:icon="@drawable/ic_baseline_logout_24"
-                android:iconTint="@android:color/black"
                 android:title="Log Off">
             </item>
         </menu>
