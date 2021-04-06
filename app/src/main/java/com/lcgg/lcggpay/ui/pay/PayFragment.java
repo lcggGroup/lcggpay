@@ -62,5 +62,4 @@ public class PayFragment extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
 }
