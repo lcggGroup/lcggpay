@@ -18,15 +18,19 @@ public class ProfileFragment extends AppCompatActivity {
     String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
             "WebOS","Ubuntu","Windows7","Max OS X"};
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    //public View onCreateView(@NonNull LayoutInflater inflater,
+                             //ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        //View root = inflater.inflate(R.layout.fragment_profile, container, false);
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_profile);
 
         ArrayAdapter adapter = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray);
 
-        ListView listView = (ListView) root.findViewById(R.id.simpleListView);
+        ListView listView = (ListView) findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
-        return root;
+        //return root;
     }
 }

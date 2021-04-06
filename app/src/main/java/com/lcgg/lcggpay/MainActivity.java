@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private FirebaseAuth mAuth;
 
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,15 +77,17 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()) {
         case R.id.profile:
             //add the function to perform here
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.nav_host_fragment, new ProfileFragment())
-                    .commit();
+            //getSupportFragmentManager().beginTransaction()
+                    //.replace(R.id.nav_host_fragment, new ProfileFragment())
+                    //.commit();
+            intent = new Intent(MainActivity.this, ProfileFragment.class);
+            startActivity(intent);
             return(true);
 
         case R.id.exit:
             //add the function to perform here
             mAuth.getInstance().signOut();
-            Intent intent = new Intent(MainActivity.this, Login.class);
+            intent = new Intent(MainActivity.this, Login.class);
             startActivity(intent);
             finish();
             return(true);
