@@ -3,18 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
-
     <item
-        android:id="@+id/profile"
-        app:showAsAction="never"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Settings">
-    </item>
-    <item
-        android:id="@+id/exit"
-        app:showAsAction="never"
-        android:icon="@drawable/ic_baseline_logout_24"
-        android:title="Log Off">
+        android:id="@+id/overflowMenu"
+        android:icon="@drawable/ic_menu"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/profile"
+                android:icon="@drawable/ic_baseline_person_24"
+                android:title="Settings"
+                app:showAsAction="never">
+            </item>
+            <item
+                android:id="@+id/exit"
+                android:icon="@drawable/ic_baseline_logout_24"
+                android:title="Log Off"
+                app:showAsAction="never">
+            </item>
+        </menu>
     </item>
 </menu>
 
