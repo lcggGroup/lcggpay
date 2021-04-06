@@ -3,6 +3,7 @@ package com.lcgg.lcggpay;
 public class Profile {
 
     public String username;
+    public String password;
     public String firstName;
     public String lastName;
     public String fullName;
@@ -10,8 +11,9 @@ public class Profile {
     public Profile() {
         // Default constructor required for calls to DataSnapshot.getValue(Profile.class)
     }
-    public Profile(String username, String firstName, String lastName) {
+    public Profile(String username, String password, String firstName, String lastName) {
         this.username = username;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -20,11 +22,14 @@ public class Profile {
     public String getUsername() {
         return username;
     }
+    public String getPassword() { return password; }
 
     //Set
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public void setPassword(String password) { this.password = password; }
 
     public String getFullName() {
         return firstName + " " + lastName;

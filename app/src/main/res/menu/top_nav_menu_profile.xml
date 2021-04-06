@@ -10,9 +10,9 @@
         app:showAsAction="always">
         <menu>
             <item
-                android:id="@+id/profile"
-                android:title="Settings"
-                app:icon="@drawable/ic_baseline_settings_24">
+                android:id="@+id/home"
+                android:title="Home"
+                app:icon="@drawable/ic_home_black_24dp">
             </item>
             <item
                 android:id="@+id/exit"
