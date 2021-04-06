@@ -67,14 +67,16 @@ public class ProfileFragment extends AppCompatActivity {
                 else if(position == 4) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "5" , Toast.LENGTH_SHORT).show();
-                }else if(position == 5) {
+                }
+                else if(position == 5) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "6" , Toast.LENGTH_SHORT).show();
                 }
                 else if(position == 6) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "7" , Toast.LENGTH_SHORT).show();
-                }else if(position == 7) {
+                }
+                else if(position == 7) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "8" , Toast.LENGTH_SHORT).show();
                 }

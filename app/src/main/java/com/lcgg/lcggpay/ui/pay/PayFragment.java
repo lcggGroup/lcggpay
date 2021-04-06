@@ -55,7 +55,7 @@ public class PayFragment extends Fragment {
         if(result != null) {
             if(result.getContents() == null) {
                 //Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_LONG).show();
-                getActivity().getFragmentManager().popBackStack();
+                getActivity().finish();
             } else {
                 Toast.makeText(getActivity(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
