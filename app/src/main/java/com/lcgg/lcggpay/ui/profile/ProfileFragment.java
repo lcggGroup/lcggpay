@@ -19,6 +19,7 @@ import com.lcgg.lcggpay.Login;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.Profile;
 import com.lcgg.lcggpay.R;
+import com.lcgg.lcggpay.ui.home.HomeFragment;
 
 public class ProfileFragment extends AppCompatActivity {
     Intent intent;
@@ -45,7 +46,7 @@ public class ProfileFragment extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_nav_menu, menu);
+        getMenuInflater().inflate(R.menu.top_nav_menu_profile, menu);
         return true;
     }
 
@@ -53,13 +54,13 @@ public class ProfileFragment extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-            case R.id.navigation_home:
+            case R.id.home:
                 //add the function to perform here
-                //getSupportFragmentManager().beginTransaction()
-                //.replace(R.id.nav_host_fragment, new ProfileFragment())
-                //.commit();
-                intent = new Intent(ProfileFragment.this, MainActivity.class);
-                startActivity(intent);
+                getSupportFragmentManager().beginTransaction()
+                .replace(R.id.nav_host_fragment, new HomeFragment())
+                .commit();
+                //intent = new Intent(ProfileFragment.this, MainActivity.class);
+                //startActivity(intent);
                 return(true);
 
             case R.id.exit:
