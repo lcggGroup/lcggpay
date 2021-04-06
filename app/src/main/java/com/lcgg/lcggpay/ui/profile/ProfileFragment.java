@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,7 +48,12 @@ public class ProfileFragment extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                for(int i = 0; i < mobileArray.length; i++) {
+                    if(position == i) {
+                        //code specific to first list item
+                        Toast.makeText(getApplicationContext(), i , Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }
