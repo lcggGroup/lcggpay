@@ -87,7 +87,8 @@ public class ProfileFragment extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_nav_menu_profile, menu);
-        return true;
+        //return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
