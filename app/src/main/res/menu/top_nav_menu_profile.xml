@@ -13,14 +13,12 @@
             <item
                 android:id="@+id/home"
                 android:icon="@drawable/ic_baseline_person_24"
-                android:title="Home"
-                app:showAsAction="never">
+                android:title="Home">
             </item>
             <item
                 android:id="@+id/exit"
                 android:icon="@drawable/ic_baseline_logout_24"
-                android:title="Log Off"
-                app:showAsAction="never">
+                android:title="Log Off">
             </item>
         </menu>
     </item>
