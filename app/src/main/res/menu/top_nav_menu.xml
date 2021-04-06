@@ -8,7 +8,7 @@
         android:id="@+id/profile"
         app:showAsAction="never"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="Profile">
+        android:title="Settings">
     </item>
     <item
         android:id="@+id/exit"
