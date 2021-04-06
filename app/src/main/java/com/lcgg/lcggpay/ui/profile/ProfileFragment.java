@@ -51,7 +51,7 @@ public class ProfileFragment extends AppCompatActivity {
                 for(int i = 0; i < mobileArray.length; i++) {
                     if(position == i) {
                         //code specific to first list item
-                        Toast.makeText(getApplicationContext(), i , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileFragment.this, i , Toast.LENGTH_SHORT).show();
                     }
                 }
             }
