@@ -29,6 +29,7 @@ public class ProfileFragment extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     String[] mobileArray = { "Username and Password","Name and Contact Information" };
+    String[] mobileArray2 = { "Username and Password", "Name", "Contact Information" };
 
     //public View onCreateView(@NonNull LayoutInflater inflater,
                              //ViewGroup container, Bundle savedInstanceState) {
@@ -40,9 +41,14 @@ public class ProfileFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_profile);
 
         ArrayAdapter adapter = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray);
+        ArrayAdapter adapter2 = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray2);
 
         ListView listView = (ListView) findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
+
+        ListView listView2 = (ListView) findViewById(R.id.simpleListView);
+        listView2.setAdapter(adapter2);
+
         //return root;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -50,6 +56,14 @@ public class ProfileFragment extends AppCompatActivity {
                 if(position == 0) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "1" , Toast.LENGTH_SHORT).show();
+                    listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            if(position == 0){
+                                Toast.makeText(ProfileFragment.this, "1.1" , Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
                 else if(position == 1) {
                     //code specific to first list item
