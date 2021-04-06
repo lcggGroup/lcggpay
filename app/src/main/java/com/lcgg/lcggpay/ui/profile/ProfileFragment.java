@@ -22,7 +22,7 @@ public class ProfileFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), R.layout.fragment_profile, mobileArray);
+        ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_view, mobileArray);
 
         ListView listView = (ListView) root.findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
