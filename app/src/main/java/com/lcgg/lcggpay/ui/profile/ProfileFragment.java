@@ -13,6 +13,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.lcgg.lcggpay.Login;
@@ -55,12 +56,6 @@ public class ProfileFragment extends AppCompatActivity {
 
         switch(item.getItemId()) {
             case R.id.home:
-                //add the function to perform here
-                //getSupportFragmentManager().beginTransaction()
-                //.replace(R.id.nav_host_fragment, new HomeFragment())
-                //.commit();
-                //intent = new Intent(ProfileFragment.this, MainActivity.class);
-                //startActivity(intent);
                 finish();
                 return(true);
 
