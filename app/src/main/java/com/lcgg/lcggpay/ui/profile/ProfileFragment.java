@@ -48,11 +48,35 @@ public class ProfileFragment extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                for(int i = 0; i < mobileArray.length; i++) {
-                    if(position == i) {
-                        //code specific to first list item
-                        Toast.makeText(ProfileFragment.this, i , Toast.LENGTH_SHORT).show();
-                    }
+                if(position == 0) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "1" , Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 1) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "2" , Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 2) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "3" , Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 3) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "4" , Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 4) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "5" , Toast.LENGTH_SHORT).show();
+                }else if(position == 5) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "6" , Toast.LENGTH_SHORT).show();
+                }
+                else if(position == 6) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "7" , Toast.LENGTH_SHORT).show();
+                }else if(position == 7) {
+                    //code specific to first list item
+                    Toast.makeText(ProfileFragment.this, "8" , Toast.LENGTH_SHORT).show();
                 }
             }
         });
