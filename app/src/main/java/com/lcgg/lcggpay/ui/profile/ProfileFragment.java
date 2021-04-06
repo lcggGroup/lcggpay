@@ -41,13 +41,8 @@ public class ProfileFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_profile);
 
         ArrayAdapter adapter = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray);
-        ArrayAdapter adapter2 = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray2);
-
         ListView listView = (ListView) findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
-
-        ListView listView2 = (ListView) findViewById(R.id.simpleListView);
-        listView2.setAdapter(adapter2);
 
         //return root;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,11 +51,22 @@ public class ProfileFragment extends AppCompatActivity {
                 if(position == 0) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "1" , Toast.LENGTH_SHORT).show();
+
+                    ArrayAdapter adapter2 = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray2);
+                    ListView listView2 = (ListView) findViewById(R.id.simpleListView);
+                    listView2.setAdapter(adapter2);
+
                     listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             if(position == 0){
                                 Toast.makeText(ProfileFragment.this, "1.1" , Toast.LENGTH_SHORT).show();
+                            }
+                            else if(position == 1){
+                                Toast.makeText(ProfileFragment.this, "1.2" , Toast.LENGTH_SHORT).show();
+                            }
+                            else if(position == 2){
+                                Toast.makeText(ProfileFragment.this, "1.3" , Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
