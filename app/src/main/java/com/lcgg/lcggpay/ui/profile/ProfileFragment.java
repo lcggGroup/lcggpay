@@ -27,7 +27,6 @@ public class ProfileFragment extends AppCompatActivity {
 
         ListView listView = (ListView) root.findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
-
         return root;
     }
 }
