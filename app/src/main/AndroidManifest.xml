@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
-        android:theme="@style/Theme.LCGGPay">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".ui.profile.ProfileFragment"
             android:label="Settings"/>

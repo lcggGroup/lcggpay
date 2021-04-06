@@ -11,17 +11,13 @@
         <menu>
             <item
                 android:id="@+id/home"
-                android:icon="@drawable/ic_home_black_24dp"
-                android:iconTint="#FF000000"
                 android:title="Home"
-                app:showAsAction="always">
+                app:icon="@drawable/ic_home_black_24dp">
             </item>
             <item
                 android:id="@+id/exit"
-                android:icon="@drawable/ic_baseline_logout_24"
-                android:iconTint="#FF000000"
                 android:title="Log Off"
-                app:showAsAction="always">
+                app:icon="@drawable/ic_baseline_logout_24">
             </item>
         </menu>
     </item>
