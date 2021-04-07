@@ -6,8 +6,8 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home_black_24dp"
+        android:iconTint="#ffffff"
         android:title="Home"
-        android:layoutDirection="ltr"
         app:showAsAction="always"/>
 
     <item
@@ -19,7 +19,8 @@
             <item
                 android:id="@+id/exit"
                 android:title="Log Off"
-                android:icon="@drawable/ic_baseline_logout_24">
+                android:icon="@drawable/ic_baseline_logout_24"
+                android:iconTint="#000000">
             </item>
         </menu>
     </item>

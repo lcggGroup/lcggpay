@@ -76,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
+        case R.id.home:
+            intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+            return(true);
+
         case R.id.profile:
             //add the function to perform here
             //getSupportFragmentManager().beginTransaction()
