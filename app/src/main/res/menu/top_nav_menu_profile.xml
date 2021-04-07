@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/overflowMenu"
         android:icon="@drawable/ic_menu"
         android:title=""
         app:showAsAction="always">
         <menu>
             <item
-                android:id="@+id/home"
-                android:title="Home"
-                app:icon="@drawable/ic_home_black_24dp">
-            </item>
-            <item
                 android:id="@+id/exit"
                 android:title="Log Off"
-                app:icon="@drawable/ic_baseline_logout_24">
+                android:icon="@drawable/ic_baseline_logout_24">
             </item>
         </menu>
     </item>

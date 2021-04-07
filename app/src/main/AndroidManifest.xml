@@ -17,8 +17,7 @@
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.profile.ProfileFragment"
-            android:label="Settings"/>
+            android:name=".ui.profile.ProfileFragment"/>
         <activity
             android:label="Register"
             android:name=".Register"/>
