@@ -11,13 +11,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
-        android:label="@string/app_name">
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.profile.ProfileFragment"/>
+            android:name=".ui.profile.ProfileFragment"
+            android:label="Settings"/>
         <activity
             android:label="Register"
             android:name=".Register"/>
@@ -26,7 +27,7 @@
             android:name=".Reset" />
         <activity
             android:name=".Login"
-            android:label="@string/app_name">
+            android:label="LCGG Pay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
