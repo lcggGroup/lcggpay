@@ -17,9 +17,7 @@
             <item
                 android:id="@+id/exit"
                 android:title="Log Off"
-                android:icon="@drawable/ic_baseline_logout_24"
-                android:iconTint="#000000">
-            </item>
+                android:icon="@drawable/ic_baseline_logout_24"/>
         </menu>
     </item>
 </menu>
