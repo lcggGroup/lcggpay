@@ -4,13 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
     <item
-        android:id="@+id/home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:iconTint="#ffffff"
-        android:title="Home"
-        app:showAsAction="always">
-    </item>
-    <item
         android:id="@+id/overflowMenu"
         android:icon="@drawable/ic_menu"
         android:title=""
@@ -19,14 +12,12 @@
             <item
                 android:id="@+id/profile"
                 android:title="Settings"
-                android:icon="@drawable/ic_baseline_settings_24"
-                android:iconTint="#000000">
+                android:icon="@drawable/ic_baseline_settings_24">
             </item>
             <item
                 android:id="@+id/exit"
                 android:title="Log Off"
-                android:icon="@drawable/ic_baseline_logout_24"
-                android:iconTint="#000000">
+                android:icon="@drawable/ic_baseline_logout_24">
             </item>
         </menu>
     </item>

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-               R.id.navigation_store, R.id.navigation_pay, R.id.navigation_wallet)
+               R.id.navigation_home, R.id.navigation_pay, R.id.navigation_wallet)
                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -76,11 +76,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-        case R.id.home:
-            intent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intent);
-            return(true);
-
         case R.id.profile:
             //add the function to perform here
             //getSupportFragmentManager().beginTransaction()
