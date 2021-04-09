@@ -14,6 +14,21 @@
         android:layout_marginBottom="15dp"
         android:gravity="top|center"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login Information"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,6 +54,7 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:padding="5dp"
                     android:background="@drawable/txt_design_box"
                     android:id="@+id/txt_reg_username"/>
             </LinearLayout>
@@ -58,6 +74,7 @@
                     android:inputType="textPassword"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:padding="5dp"
                     android:background="@drawable/txt_design_box"
                     android:id="@+id/txt_reg_password"/>
             </LinearLayout>
@@ -77,6 +94,7 @@
                     android:inputType="textPassword"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:padding="5dp"
                     android:background="@drawable/txt_design_box"
                     android:id="@+id/txt_reg_retype_pass"/>
             </LinearLayout>
@@ -91,10 +109,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Details"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -114,6 +145,7 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:padding="5dp"
                     android:background="@drawable/txt_design_box"
                     android:id="@+id/txt_reg_first_name"/>
             </LinearLayout>
@@ -133,12 +165,20 @@
                     android:inputType="textPassword"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:padding="5dp"
                     android:background="@drawable/txt_design_box"
                     android:id="@+id/txt_reg_last_name"/>
             </LinearLayout>
 
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
