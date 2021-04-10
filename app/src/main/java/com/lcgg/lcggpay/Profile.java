@@ -35,7 +35,7 @@ public class Profile {
 
     public String getFullName() {
         if (middleName == "" || middleName == null){
-            return firstName + " " + middleName + " " + lastName;
+            return firstName + " " + lastName;
         }
         else{
             return firstName + " " + middleName + " " + lastName;
@@ -64,7 +64,7 @@ public class Profile {
 
     public void setFullName(String firstName, String middleName, String lastName) {
         if (middleName == "" || middleName == null){
-            this.fullName = firstName + " " + middleName + " " + lastName;
+            this.fullName = firstName + " " + lastName;
         }
         else{
             this.fullName = firstName + " " + middleName + " " + lastName;
