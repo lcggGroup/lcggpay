@@ -181,7 +181,7 @@ public class Register extends AppCompatActivity {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public void writeNewUser(String username, String firstName, String middleName, String password, String lastName) {
+    public void writeNewUser(String username, String password, String firstName, String middleName, String lastName) {
 
         Profile profile = new Profile (username, password, firstName, middleName, lastName);
         myRef.addValueEventListener(new ValueEventListener() {
