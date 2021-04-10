@@ -5,16 +5,18 @@ public class Profile {
     public String username;
     public String password;
     public String firstName;
+    public String middleName;
     public String lastName;
     public String fullName;
 
     public Profile() {
         // Default constructor required for calls to DataSnapshot.getValue(Profile.class)
     }
-    public Profile(String username, String password, String firstName, String lastName) {
+    public Profile(String username, String password, String firstName, String middleName, String lastName) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
+        this.middleName = middleName;
         this.lastName = lastName;
     }
 
@@ -42,6 +44,10 @@ public class Profile {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public String getMiddleName() { return middleName; }
+
+    public void setMiddleName(String middleName) { this.middleName = middleName; }
 
     public String getLastName() {
         return lastName;

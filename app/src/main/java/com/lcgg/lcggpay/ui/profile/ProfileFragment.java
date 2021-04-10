@@ -29,7 +29,7 @@ public class ProfileFragment extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     String[] mobileArray = { "Username and Password","Name and Contact Information" };
-    String[] mobileArray2 = { "Name", "Contact Information" };
+    String[] mobileArray2 = { "Name", "Contact Information", "QR Code" };
 
     //public View onCreateView(@NonNull LayoutInflater inflater,
                              //ViewGroup container, Bundle savedInstanceState) {

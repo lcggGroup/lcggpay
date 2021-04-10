@@ -39,6 +39,7 @@ public class Register extends AppCompatActivity {
     EditText txt_reg_password;
     EditText txt_reg_retype_pass;
     EditText txt_reg_firstName;
+    EditText txt_reg_middletName;
     EditText txt_reg_lastName;
 
     Button btnSubmit;
@@ -55,6 +56,7 @@ public class Register extends AppCompatActivity {
         txt_reg_password = findViewById(R.id.txt_reg_password);
         txt_reg_retype_pass = findViewById(R.id.txt_reg_retype_pass);
         txt_reg_firstName = findViewById(R.id.txt_reg_first_name);
+        txt_reg_middletName = findViewById(R.id.txt_reg_middle_name);
         txt_reg_lastName = findViewById(R.id.txt_reg_last_name);
 
         btnSubmit = findViewById(R.id.btn_reg_submit);
@@ -155,7 +157,7 @@ public class Register extends AppCompatActivity {
                                     }
                                     else {
                                         myRef = database.getReference(mAuth.getUid());
-                                        writeNewUser(txt_reg_username.getText().toString(), txt_reg_password.getText().toString(),txt_reg_firstName.getText().toString(),txt_reg_lastName.getText().toString());
+                                        writeNewUser(txt_reg_username.getText().toString(), txt_reg_password.getText().toString(), txt_reg_firstName.getText().toString(), txt_reg_middletName.getText().toString(), txt_reg_lastName.getText().toString());
                                         writeNewWallet();
 
                                         startActivity(new Intent(Register.this, MainActivity.class));
@@ -179,9 +181,9 @@ public class Register extends AppCompatActivity {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public void writeNewUser(String username, String firstName, String password, String lastName) {
+    public void writeNewUser(String username, String firstName, String middleName, String password, String lastName) {
 
-        Profile profile = new Profile (username, password, firstName, lastName);
+        Profile profile = new Profile (username, password, firstName, middleName, lastName);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
