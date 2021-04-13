@@ -34,7 +34,7 @@ public class Profile {
     public void setPassword(String password) { this.password = password; }
 
     public String getFullName() {
-        if (middleName == "" || middleName == null){
+        if (middleName == "" || middleName == " " || middleName == null){
             return firstName + " " + lastName;
         }
         else{
@@ -63,7 +63,7 @@ public class Profile {
     }
 
     public void setFullName(String firstName, String middleName, String lastName) {
-        if (middleName == "" || middleName == null){
+        if (middleName == "" || middleName == " " || middleName == null){
             this.fullName = firstName + " " + lastName;
         }
         else{
