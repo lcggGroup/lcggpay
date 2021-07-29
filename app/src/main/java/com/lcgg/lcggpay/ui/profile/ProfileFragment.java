@@ -31,11 +31,6 @@ public class ProfileFragment extends AppCompatActivity {
     String[] mobileArray = { "Username and Password","Name and Contact Information" };
     String[] mobileArray2 = { "Name", "Contact Information", "QR Code" };
 
-    //public View onCreateView(@NonNull LayoutInflater inflater,
-                             //ViewGroup container, Bundle savedInstanceState) {
-
-        //View root = inflater.inflate(R.layout.fragment_profile, container, false);
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile);
@@ -51,10 +46,10 @@ public class ProfileFragment extends AppCompatActivity {
                 if(position == 0) {
                     //code specific to first list item
                     Toast.makeText(ProfileFragment.this, "1" , Toast.LENGTH_SHORT).show();
+                    //create intent - UserName and Password
                 }
                 else if(position == 1) {
                     //code specific to first list item
-                    Toast.makeText(ProfileFragment.this, "2" , Toast.LENGTH_SHORT).show();
                     ArrayAdapter adapter2 = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray2);
                     ListView listView2 = (ListView) findViewById(R.id.simpleListView);
                     listView2.setAdapter(adapter2);
@@ -64,12 +59,15 @@ public class ProfileFragment extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             if(position == 0){
                                 Toast.makeText(ProfileFragment.this, "1.1" , Toast.LENGTH_SHORT).show();
+                                //create intent - Name
                             }
                             else if(position == 1){
                                 Toast.makeText(ProfileFragment.this, "1.2" , Toast.LENGTH_SHORT).show();
+                                //create intent - Contact Information
                             }
                             else if(position == 2){
                                 Toast.makeText(ProfileFragment.this, "1.3" , Toast.LENGTH_SHORT).show();
+                                //create intent - QR Code
                             }
                         }
                     });
