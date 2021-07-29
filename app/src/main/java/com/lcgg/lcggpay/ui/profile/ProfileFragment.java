@@ -34,6 +34,8 @@ public class ProfileFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ArrayAdapter adapter = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray);
         ListView listView = (ListView) findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
