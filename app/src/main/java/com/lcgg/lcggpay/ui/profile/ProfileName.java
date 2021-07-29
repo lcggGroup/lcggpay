@@ -23,7 +23,7 @@ public class ProfileName extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.top_nav_menu, menu);
+        getMenuInflater().inflate(R.menu.top_nav_menu_profile, menu);
         //return true;
         return super.onCreateOptionsMenu(menu);
     }
@@ -32,11 +32,6 @@ public class ProfileName extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-            case R.id.profile:
-                intent = new Intent(ProfileName.this, ProfileFragment.class);
-                startActivity(intent);
-                return(true);
-
             case R.id.exit:
                 //add the function to perform here
                 mAuth.getInstance().signOut();
