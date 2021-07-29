@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.profile.ProfileFragment"
-            android:label="Settings"/>
+            android:label="Settings"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:label="Register"
             android:name=".Register"/>
