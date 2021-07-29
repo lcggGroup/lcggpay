@@ -44,39 +44,81 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/btn_add"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:drawableLeft="@drawable/ic_add"
-                android:drawableTint="@color/white"
-                android:paddingLeft="30dp"
-                android:paddingRight="20dp"
-                android:tooltipText="Add Money"/>
-            <Button
-                android:id="@+id/btn_transfer"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableLeft="@drawable/ic_add"
+                    android:drawableTint="@color/white"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Money"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:drawableLeft="@drawable/ic_transfer"
-                android:drawableTint="@color/white"
-                android:paddingLeft="30dp"
-                android:paddingRight="20dp"
-                android:tooltipText="Transfer Funds"/>
-            <Button
-                android:id="@+id/btn_withdraw"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_transfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableLeft="@drawable/ic_transfer"
+                    android:drawableTint="@color/white"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer Funds"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:drawableLeft="@drawable/ic_withdraw"
-                android:drawableTint="@color/white"
-                android:paddingLeft="30dp"
-                android:paddingRight="20dp"
-                android:tooltipText="Add to Bank Account"/>
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/btn_withdraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:drawableLeft="@drawable/ic_withdraw"
+                    android:drawableTint="@color/white"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bank Transfer"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
