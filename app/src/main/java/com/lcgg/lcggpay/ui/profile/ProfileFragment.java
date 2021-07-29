@@ -28,8 +28,7 @@ public class ProfileFragment extends AppCompatActivity {
     Intent intent;
     private FirebaseAuth mAuth;
 
-    String[] mobileArray = { "Username and Password","Name and Contact Information" };
-    String[] mobileArray2 = { "Name", "Contact Information", "QR Code" };
+    String[] mobileArray = { "Username and Password","Contact Information" };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,27 +49,8 @@ public class ProfileFragment extends AppCompatActivity {
                 }
                 else if(position == 1) {
                     //code specific to first list item
-                    ArrayAdapter adapter2 = new ArrayAdapter<String>(ProfileFragment.this, R.layout.list_view, mobileArray2);
-                    ListView listView2 = (ListView) findViewById(R.id.simpleListView);
-                    listView2.setAdapter(adapter2);
-
-                    listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            if(position == 0){
-                                Toast.makeText(ProfileFragment.this, "1.1" , Toast.LENGTH_SHORT).show();
-                                //create intent - Name
-                            }
-                            else if(position == 1){
-                                Toast.makeText(ProfileFragment.this, "1.2" , Toast.LENGTH_SHORT).show();
-                                //create intent - Contact Information
-                            }
-                            else if(position == 2){
-                                Toast.makeText(ProfileFragment.this, "1.3" , Toast.LENGTH_SHORT).show();
-                                //create intent - QR Code
-                            }
-                        }
-                    });
+                    Toast.makeText(ProfileFragment.this, "2" , Toast.LENGTH_SHORT).show();
+                    //create intent - Contact Information
                 }
             }
         });
@@ -87,11 +67,6 @@ public class ProfileFragment extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-            case R.id.home:
-                intent = new Intent(ProfileFragment.this, MainActivity.class);
-                startActivity(intent);
-                return(true);
-
             case R.id.exit:
                 //add the function to perform here
                 mAuth.getInstance().signOut();

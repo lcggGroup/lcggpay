@@ -32,11 +32,6 @@ public class ProfileName extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch(item.getItemId()) {
-            case R.id.home:
-                intent = new Intent(ProfileName.this, MainActivity.class);
-                startActivity(intent);
-                return(true);
-
             case R.id.exit:
                 //add the function to perform here
                 mAuth.getInstance().signOut();
