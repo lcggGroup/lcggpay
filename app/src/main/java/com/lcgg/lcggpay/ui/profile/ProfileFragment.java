@@ -38,7 +38,6 @@ public class ProfileFragment extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.simpleListView);
         listView.setAdapter(adapter);
 
-        //return root;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
