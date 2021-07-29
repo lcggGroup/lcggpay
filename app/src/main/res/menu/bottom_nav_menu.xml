@@ -6,13 +6,6 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-    <!--
-        <item
-            android:id="@+id/navigation_home"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/title_home" />
-    -->
-
     <item
         android:id="@+id/navigation_pay"
         android:icon="@drawable/ic_qrcode_scanner"
@@ -24,6 +17,5 @@
             android:icon="@drawable/ic_store"
             android:title="@string/title_store" />
     -->
-
 
 </menu>

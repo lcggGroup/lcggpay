@@ -5,10 +5,11 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
+
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.lcgg.lcggpay.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_wallet"
+        android:name="com.lcgg.lcggpay.ui.wallet.WalletFragment"
+        tools:layout="@layout/fragment_wallet" />
 
     <fragment
         android:id="@+id/navigation_pay"
@@ -20,8 +21,5 @@
         android:name="com.lcgg.lcggpay.ui.store.StoreFragment"
         tools:layout="@layout/fragment_store" />
 -->
-        <fragment
-            android:id="@+id/navigation_wallet"
-            android:name="com.lcgg.lcggpay.ui.wallet.WalletFragment"
-            tools:layout="@layout/fragment_wallet" />
+
     </navigation>
