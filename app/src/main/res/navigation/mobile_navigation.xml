@@ -7,19 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_wallet"
-        android:name="com.lcgg.lcggpay.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.lcgg.lcggpay.ui.wallet.WalletFragment"
+        tools:layout="@layout/fragment_wallet" />
 
     <fragment
         android:id="@+id/navigation_pay"
         android:name="com.lcgg.lcggpay.ui.pay.PayFragment"
         tools:layout="@layout/fragment_pay" />
 <!--
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.lcgg.lcggpay.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
-
     <fragment
         android:id="@+id/navigation_store"
         android:name="com.lcgg.lcggpay.ui.store.StoreFragment"
