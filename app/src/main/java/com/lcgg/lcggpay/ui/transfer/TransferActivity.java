@@ -27,8 +27,7 @@ public class TransferActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(TransferActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
