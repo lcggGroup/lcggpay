@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,9 +23,6 @@ import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.Wallet;
-import com.lcgg.lcggpay.ui.pay.PayFragment;
-import com.lcgg.lcggpay.ui.profile.ProfileFragment;
-import com.lcgg.lcggpay.ui.transfer.TransferActivity;
 
 public class WalletFragment extends Fragment {
 
