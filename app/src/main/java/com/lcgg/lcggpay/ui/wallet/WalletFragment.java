@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,11 +20,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.Wallet;
-import com.lcgg.lcggpay.ui.pay.PayFragment;
+import com.lcgg.lcggpay.ui.transfer.TransferActivity;
 
 public class WalletFragment extends Fragment {
+
+    Intent intent;
 
     EditText txtBalance;
     Button addFunds;
@@ -75,9 +77,8 @@ public class WalletFragment extends Fragment {
         transferFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                integrator = IntentIntegrator.forSupportFragment(WalletFragment.this);
-                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-                integrator.initiateScan();
+                intent = new Intent(getActivity(), TransferActivity.class);
+                startActivity(intent);
             }
         });
 

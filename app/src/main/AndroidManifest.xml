@@ -3,39 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lcgg.lcggpay">
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.transfer.TransferActivity"
+            android:label="Transfer Funds"/>
         <activity
             android:name=".ui.profile.ProfileFragment"
             android:label="Settings"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:label="Register"
-            android:name=".Register"/>
+            android:name=".Register"
+            android:label="Register" />
         <activity
-            android:label="Forgot Password"
-            android:name=".Reset" />
+            android:name=".Reset"
+            android:label="Forgot Password" />
         <activity
             android:name=".Login"
             android:label="LCGG Pay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"
