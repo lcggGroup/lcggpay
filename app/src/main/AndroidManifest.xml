@@ -24,8 +24,7 @@
 
         <activity
             android:name=".ui.transfer.TransferActivity"
-            android:label="Settings"
-            android:parentActivityName=".MainActivity" />
+            android:label="Transfer Funds"/>
         <activity
             android:name=".ui.profile.ProfileFragment"
             android:label="Settings"
