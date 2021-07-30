@@ -78,7 +78,7 @@ public class WalletFragment extends Fragment {
         transferFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getActivity(), MainActivity.class);
+                intent = new Intent(getActivity(), TransferActivity.class);
                 startActivity(intent);
             }
         });
