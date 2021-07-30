@@ -21,24 +21,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.lcgg.lcggpay.Login;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.Wallet;
 import com.lcgg.lcggpay.ui.pay.PayFragment;
+import com.lcgg.lcggpay.ui.profile.ProfileFragment;
 import com.lcgg.lcggpay.ui.transfer.TransferActivity;
 
 public class WalletFragment extends Fragment {
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef;
-    private IntentIntegrator integrator;
 
     Intent intent;
+
     EditText txtBalance;
     Button addFunds;
     Button transferFunds;
     Button withdrawFunds;
+
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef;
+    private IntentIntegrator integrator;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

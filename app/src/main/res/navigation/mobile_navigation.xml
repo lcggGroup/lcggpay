@@ -1,134 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Login">
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_wallet">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="top|center"
-        android:orientation="vertical">
+    <fragment
+        android:id="@+id/navigation_wallet"
+        android:name="com.lcgg.lcggpay.ui.wallet.WalletFragment"
+        tools:layout="@layout/fragment_wallet" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:src="@mipmap/ic_logo"/>
+    <fragment
+        android:id="@+id/navigation_pay"
+        android:name="com.lcgg.lcggpay.ui.pay.PayFragment"
+        tools:layout="@layout/fragment_pay" />
+<!--
+    <fragment
+        android:id="@+id/navigation_store"
+        android:name="com.lcgg.lcggpay.ui.store.StoreFragment"
+        tools:layout="@layout/fragment_store" />
+-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center|center"
-                    android:text="Username:"/>
-
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/txt_username"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:inputType="textEmailAddress"
-                    android:background="@drawable/txt_design_box"
-                    android:padding="5dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center|center"
-                    android:text="Password:"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/txt_password"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:inputType="textPassword"
-                    android:background="@drawable/txt_design_box"
-                    android:padding="5dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_cancel"
-                android:layout_margin="10dp"
-                android:text="Cancel"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_submit"
-                android:layout_margin="10dp"
-                android:text="Submit"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Not yet registered? To register,"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:id="@+id/txt_register"
-                android:text="click here."/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forgot your password?"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:id="@+id/txt_reset"
-                android:text="Click here."/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </navigation>
