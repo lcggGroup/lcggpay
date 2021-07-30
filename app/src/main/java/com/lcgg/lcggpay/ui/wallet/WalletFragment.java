@@ -23,6 +23,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.Wallet;
+import com.lcgg.lcggpay.ui.transfer.TransferActivity;
 
 public class WalletFragment extends Fragment {
 
@@ -76,7 +77,7 @@ public class WalletFragment extends Fragment {
         transferFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getActivity(), MainActivity.class);
+                intent = new Intent(getActivity(), TransferActivity.class);
                 startActivity(intent);
             }
         });
