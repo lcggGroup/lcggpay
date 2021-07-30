@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.lcgg.lcggpay.Login;
+import com.lcgg.lcggpay.MainActivity;
 import com.lcgg.lcggpay.R;
 import com.lcgg.lcggpay.Wallet;
 import com.lcgg.lcggpay.ui.pay.PayFragment;
@@ -77,7 +78,7 @@ public class WalletFragment extends Fragment {
         transferFunds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getActivity(), TransferActivity.class);
+                intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
