@@ -45,16 +45,10 @@ public class ProfileFragment extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0) {
-                    //code specific to first list item
-                    Toast.makeText(ProfileFragment.this, "1" , Toast.LENGTH_SHORT).show();
-                    //create intent - UserName and Password
                     intent = new Intent(ProfileFragment.this, LoginCredentials.class);
                     startActivity(intent);
                 }
                 else if(position == 1) {
-                    //code specific to first list item
-                    Toast.makeText(ProfileFragment.this, "2" , Toast.LENGTH_SHORT).show();
-                    //create intent - Contact Information
                     intent = new Intent(ProfileFragment.this, ContactInformation.class);
                     startActivity(intent);
                 }
