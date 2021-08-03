@@ -127,17 +127,11 @@
             android:layout_marginTop="5dp"
             android:gravity="center">
             <Button
-                android:id="@+id/contactBtn_cancel"
+                android:id="@+id/contactBtn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Edit"/>
-            <Button
-                android:id="@+id/contactBtn_submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Save"/>
         </LinearLayout>
     </LinearLayout>
 
