@@ -29,6 +29,8 @@ public class LoginCredentials extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_credential);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         save = findViewById(R.id.loginBtn_save);
         edit = findViewById(R.id.loginBtn_pass);
 
@@ -39,7 +41,9 @@ public class LoginCredentials extends AppCompatActivity {
 
         save.setVisibility(View.GONE);
 
-        passEdit.setVisibility(View.GONE);
+        pass.setVisibility(View.GONE);
+        rePass.setVisibility(View.GONE);
+        rePassEdit.setVisibility(View.GONE);
         passEdit.setVisibility(View.GONE);
 
         edit.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +51,8 @@ public class LoginCredentials extends AppCompatActivity {
             public void onClick(View v) {
                 save.setVisibility(View.VISIBLE);
                 pass.setVisibility(View.VISIBLE);
-                pass.setVisibility(View.VISIBLE);
-                passEdit.setVisibility(View.VISIBLE);
+                rePass.setVisibility(View.VISIBLE);
+                rePassEdit.setVisibility(View.VISIBLE);
                 passEdit.setVisibility(View.VISIBLE);
                 edit.setText("Cancel");
 
@@ -56,10 +60,11 @@ public class LoginCredentials extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         save.setVisibility(View.GONE);
-                        pass.setVisibility(View.GONE);
-                        pass.setVisibility(View.GONE);
-                        passEdit.setVisibility(View.GONE);
-                        passEdit.setVisibility(View.GONE);
+                        edit.setText("Change Password");
+                        pass.setVisibility(View.VISIBLE);
+                        rePass.setVisibility(View.VISIBLE);
+                        rePassEdit.setVisibility(View.VISIBLE);
+                        passEdit.setVisibility(View.VISIBLE);
 
                     }
                 });
@@ -71,8 +76,8 @@ public class LoginCredentials extends AppCompatActivity {
             public void onClick(View v) {
                 save.setVisibility(View.GONE);
                 pass.setVisibility(View.GONE);
-                pass.setVisibility(View.GONE);
-                passEdit.setVisibility(View.GONE);
+                rePass.setVisibility(View.GONE);
+                rePassEdit.setVisibility(View.GONE);
                 passEdit.setVisibility(View.GONE);
 
             }

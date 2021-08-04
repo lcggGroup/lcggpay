@@ -31,10 +31,12 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.profile.ContactInformation"
-            android:label="Contact Information"/>
+            android:label="Contact Information"
+            android:parentActivityName=".ui.profile.ProfileFragment" />
         <activity
             android:name=".ui.profile.LoginCredentials"
-            android:label="User Credentials"/>
+            android:label="User Credentials"
+            android:parentActivityName=".ui.profile.ProfileFragment" />
         <activity
             android:name=".Register"
             android:label="Register" />
