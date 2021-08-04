@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,18 +17,63 @@ import com.lcgg.lcggpay.R;
 
 public class LoginCredentials extends AppCompatActivity {
     Button edit;
+    Button save;
+
+    EditText passEdit;
+    EditText rePassEdit;
+
+    TextView pass;
+    TextView rePass;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_credential);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        save = findViewById(R.id.loginBtn_save);
+        edit = findViewById(R.id.loginBtn_pass);
 
-        edit = findViewById(R.id.loginBtn_edit);
+        pass = findViewById(R.id.txt_login_cred_pass);
+        rePass = findViewById(R.id.txt_login_cred_re_pass);
+        passEdit = findViewById(R.id.txt_login_cred_passEdit);
+        rePassEdit = findViewById(R.id.txt_login_cred_re_passEdit);
+
+        save.setVisibility(View.GONE);
+
+        passEdit.setVisibility(View.GONE);
+        passEdit.setVisibility(View.GONE);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setVisibility(View.VISIBLE);
+                pass.setVisibility(View.VISIBLE);
+                pass.setVisibility(View.VISIBLE);
+                passEdit.setVisibility(View.VISIBLE);
+                passEdit.setVisibility(View.VISIBLE);
+                edit.setText("Cancel");
+
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        save.setVisibility(View.GONE);
+                        pass.setVisibility(View.GONE);
+                        pass.setVisibility(View.GONE);
+                        passEdit.setVisibility(View.GONE);
+                        passEdit.setVisibility(View.GONE);
+
+                    }
+                });
+
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save.setVisibility(View.GONE);
+                pass.setVisibility(View.GONE);
+                pass.setVisibility(View.GONE);
+                passEdit.setVisibility(View.GONE);
+                passEdit.setVisibility(View.GONE);
 
             }
         });

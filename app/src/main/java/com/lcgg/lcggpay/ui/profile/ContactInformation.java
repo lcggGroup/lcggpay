@@ -34,8 +34,6 @@ public class ContactInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_info);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         edit = findViewById(R.id.contactBtn_edit);
         save = findViewById(R.id.contactBtn_save);
 
@@ -69,7 +67,7 @@ public class ContactInformation extends AppCompatActivity {
                 mNameEdit.setVisibility(View.VISIBLE);
                 lNameEdit.setVisibility(View.VISIBLE);
 
-                save.setVisibility(View.GONE);
+                save.setVisibility(View.VISIBLE);
 
                 edit.setText("Cancel");
                 edit.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +80,9 @@ public class ContactInformation extends AppCompatActivity {
                         fNameEdit.setVisibility(View.GONE);
                         mNameEdit.setVisibility(View.GONE);
                         lNameEdit.setVisibility(View.GONE);
-                        save.setVisibility(View.VISIBLE);
+
+                        edit.setText("Edit");
+                        save.setVisibility(View.GONE);
                         Toast.makeText(ContactInformation.this, "Cancel" , Toast.LENGTH_SHORT).show();
                     }
                 });
