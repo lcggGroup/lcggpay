@@ -49,12 +49,14 @@ public class LoginCredentials extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                save.setVisibility(View.VISIBLE);
+
                 pass.setVisibility(View.VISIBLE);
                 rePass.setVisibility(View.VISIBLE);
                 rePassEdit.setVisibility(View.VISIBLE);
                 passEdit.setVisibility(View.VISIBLE);
+
                 edit.setText("Cancel");
+                save.setVisibility(View.VISIBLE);
 
                 //cancel
                 edit.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +69,6 @@ public class LoginCredentials extends AppCompatActivity {
                         rePass.setVisibility(View.GONE);
                         rePassEdit.setVisibility(View.GONE);
                         passEdit.setVisibility(View.GONE);
-
                     }
                 });
 
