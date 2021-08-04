@@ -104,6 +104,22 @@ public class ContactInformation extends AppCompatActivity {
 
                 save.setVisibility(View.GONE);
                 edit.setText("Edit");
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        fName.setVisibility(View.VISIBLE);
+                        mName.setVisibility(View.VISIBLE);
+                        lName.setVisibility(View.VISIBLE);
+
+                        fNameEdit.setVisibility(View.GONE);
+                        mNameEdit.setVisibility(View.GONE);
+                        lNameEdit.setVisibility(View.GONE);
+
+                        edit.setText("Edit");
+                        save.setVisibility(View.GONE);
+                        Toast.makeText(ContactInformation.this, "Cancel" , Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
         });

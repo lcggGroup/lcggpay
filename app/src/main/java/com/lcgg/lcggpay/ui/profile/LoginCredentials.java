@@ -54,17 +54,17 @@ public class LoginCredentials extends AppCompatActivity {
                 rePass.setVisibility(View.VISIBLE);
                 rePassEdit.setVisibility(View.VISIBLE);
                 passEdit.setVisibility(View.VISIBLE);
-                edit.setText("Change Password");
+                edit.setText("Cancel");
 
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        save.setVisibility(View.VISIBLE);
-                        edit.setText("Cancel");
-                        pass.setVisibility(View.VISIBLE);
-                        rePass.setVisibility(View.VISIBLE);
-                        rePassEdit.setVisibility(View.VISIBLE);
-                        passEdit.setVisibility(View.VISIBLE);
+                        save.setVisibility(View.GONE);
+                        edit.setText("Change Password");
+                        pass.setVisibility(View.GONE);
+                        rePass.setVisibility(View.GONE);
+                        rePassEdit.setVisibility(View.GONE);
+                        passEdit.setVisibility(View.GONE);
 
                     }
                 });
@@ -82,6 +82,19 @@ public class LoginCredentials extends AppCompatActivity {
                 rePass.setVisibility(View.GONE);
                 rePassEdit.setVisibility(View.GONE);
                 passEdit.setVisibility(View.GONE);
+
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        save.setVisibility(View.GONE);
+                        edit.setText("Change Password");
+                        pass.setVisibility(View.GONE);
+                        rePass.setVisibility(View.GONE);
+                        rePassEdit.setVisibility(View.GONE);
+                        passEdit.setVisibility(View.GONE);
+
+                    }
+                });
 
             }
         });
