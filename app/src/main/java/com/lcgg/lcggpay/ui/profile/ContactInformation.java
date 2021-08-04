@@ -75,13 +75,13 @@ public class ContactInformation extends AppCompatActivity {
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        fName.setVisibility(View.GONE);
-                        mName.setVisibility(View.GONE);
-                        lName.setVisibility(View.GONE);
+                        fName.setVisibility(View.VISIBLE);
+                        mName.setVisibility(View.VISIBLE);
+                        lName.setVisibility(View.VISIBLE);
 
-                        fNameEdit.setVisibility(View.VISIBLE);
-                        mNameEdit.setVisibility(View.VISIBLE);
-                        lNameEdit.setVisibility(View.VISIBLE);
+                        fNameEdit.setVisibility(View.GONE);
+                        mNameEdit.setVisibility(View.GONE);
+                        lNameEdit.setVisibility(View.GONE);
 
                         edit.setText("Edit");
                         save.setVisibility(View.GONE);
@@ -107,15 +107,15 @@ public class ContactInformation extends AppCompatActivity {
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        fName.setVisibility(View.GONE);
-                        mName.setVisibility(View.GONE);
-                        lName.setVisibility(View.GONE);
+                        fName.setVisibility(View.VISIBLE);
+                        mName.setVisibility(View.VISIBLE);
+                        lName.setVisibility(View.VISIBLE);
 
-                        fNameEdit.setVisibility(View.VISIBLE);
-                        mNameEdit.setVisibility(View.VISIBLE);
-                        lNameEdit.setVisibility(View.VISIBLE);
+                        fNameEdit.setVisibility(View.GONE);
+                        mNameEdit.setVisibility(View.GONE);
+                        lNameEdit.setVisibility(View.GONE);
 
-                        edit.setText("Edit");
+                        edit.setText("Save");
                         save.setVisibility(View.GONE);
                         Toast.makeText(ContactInformation.this, "Cancel" , Toast.LENGTH_SHORT).show();
                     }
