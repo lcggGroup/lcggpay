@@ -54,13 +54,13 @@ public class LoginCredentials extends AppCompatActivity {
                 rePass.setVisibility(View.VISIBLE);
                 rePassEdit.setVisibility(View.VISIBLE);
                 passEdit.setVisibility(View.VISIBLE);
-                edit.setText("Cancel");
+                edit.setText("Change Password");
 
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        save.setVisibility(View.GONE);
-                        edit.setText("Change Password");
+                        save.setVisibility(View.VISIBLE);
+                        edit.setText("Cancel");
                         pass.setVisibility(View.VISIBLE);
                         rePass.setVisibility(View.VISIBLE);
                         rePassEdit.setVisibility(View.VISIBLE);
@@ -71,10 +71,13 @@ public class LoginCredentials extends AppCompatActivity {
 
             }
         });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 save.setVisibility(View.GONE);
+                edit.setText("Change Password");
+
                 pass.setVisibility(View.GONE);
                 rePass.setVisibility(View.GONE);
                 rePassEdit.setVisibility(View.GONE);
