@@ -64,7 +64,7 @@ public class LoginCredentials extends AppCompatActivity {
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        onBackPressed();
+                        intent = new Intent(LoginCredentials.this, LoginCredentials.class);
                     }
                 });
 
