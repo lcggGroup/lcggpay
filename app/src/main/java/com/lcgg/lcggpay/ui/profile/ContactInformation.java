@@ -78,17 +78,17 @@ public class ContactInformation extends AppCompatActivity {
 
                         if(edit.getText() == "Cancel"){
 
-                        fName.setVisibility(View.VISIBLE);
-                        mName.setVisibility(View.VISIBLE);
-                        lName.setVisibility(View.VISIBLE);
+                            fNameEdit.setVisibility(View.GONE);
+                            mNameEdit.setVisibility(View.GONE);
+                            lNameEdit.setVisibility(View.GONE);
 
-                        fNameEdit.setVisibility(View.GONE);
-                        mNameEdit.setVisibility(View.GONE);
-                        lNameEdit.setVisibility(View.GONE);
+                            fName.setVisibility(View.VISIBLE);
+                            mName.setVisibility(View.VISIBLE);
+                            lName.setVisibility(View.VISIBLE);
 
-                        save.setVisibility(View.GONE);
-                        edit.setVisibility(View.VISIBLE);
-                        edit.setText("Edit");
+                            save.setVisibility(View.GONE);
+                            edit.setVisibility(View.VISIBLE);
+                            edit.setText("Edit");
                         }
 
                         if(edit.getText() == "Edit"){
