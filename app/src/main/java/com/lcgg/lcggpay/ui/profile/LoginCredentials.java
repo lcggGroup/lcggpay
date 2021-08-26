@@ -64,13 +64,24 @@ public class LoginCredentials extends AppCompatActivity {
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        edit.setText("Change Password");
                         save.setVisibility(View.GONE);
+
+                        if(edit.getText() == "Cancel"){
+                        edit.setText("Change Password");
 
                         pass.setVisibility(View.GONE);
                         rePass.setVisibility(View.GONE);
                         rePassEdit.setVisibility(View.GONE);
                         passEdit.setVisibility(View.GONE);
+                        }
+                        else{
+                            edit.setText("Cancel");
+
+                            pass.setVisibility(View.VISIBLE);
+                            rePass.setVisibility(View.VISIBLE);
+                            rePassEdit.setVisibility(View.VISIBLE);
+                            passEdit.setVisibility(View.VISIBLE);
+                        }
                     }
                 });
 
