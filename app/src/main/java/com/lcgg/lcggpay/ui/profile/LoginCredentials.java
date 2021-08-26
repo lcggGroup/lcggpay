@@ -64,8 +64,13 @@ public class LoginCredentials extends AppCompatActivity {
                 edit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        intent = new Intent(LoginCredentials.this, LoginCredentials.class);
-                        startActivity(intent);
+                        edit.setText("Change Password");
+                        save.setVisibility(View.GONE);
+
+                        pass.setVisibility(View.GONE);
+                        rePass.setVisibility(View.GONE);
+                        rePassEdit.setVisibility(View.GONE);
+                        passEdit.setVisibility(View.GONE);
                     }
                 });
 
@@ -78,6 +83,7 @@ public class LoginCredentials extends AppCompatActivity {
             public void onClick(View v) {
                 save.setVisibility(View.GONE);
                 edit.setVisibility(View.VISIBLE);
+                edit.setText("Change Password");
 
                 pass.setVisibility(View.GONE);
                 rePass.setVisibility(View.GONE);
