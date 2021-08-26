@@ -76,21 +76,6 @@ public class ContactInformation extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        if(edit.getText() == "Cancel"){
-
-                            fNameEdit.setVisibility(View.GONE);
-                            mNameEdit.setVisibility(View.GONE);
-                            lNameEdit.setVisibility(View.GONE);
-
-                            fName.setVisibility(View.VISIBLE);
-                            mName.setVisibility(View.VISIBLE);
-                            lName.setVisibility(View.VISIBLE);
-
-                            save.setVisibility(View.GONE);
-                            edit.setVisibility(View.VISIBLE);
-                            edit.setText("Edit");
-                        }
-
                         if(edit.getText() == "Edit"){
 
                             fName.setVisibility(View.GONE);
@@ -105,6 +90,21 @@ public class ContactInformation extends AppCompatActivity {
                             edit.setVisibility(View.VISIBLE);
                             edit.setText("Cancel");
                         }
+                        else {
+
+                            fNameEdit.setVisibility(View.GONE);
+                            mNameEdit.setVisibility(View.GONE);
+                            lNameEdit.setVisibility(View.GONE);
+
+                            fName.setVisibility(View.VISIBLE);
+                            mName.setVisibility(View.VISIBLE);
+                            lName.setVisibility(View.VISIBLE);
+
+                            save.setVisibility(View.GONE);
+                            edit.setVisibility(View.VISIBLE);
+                            edit.setText("Edit");
+                        }
+
 
                     }
                 });
