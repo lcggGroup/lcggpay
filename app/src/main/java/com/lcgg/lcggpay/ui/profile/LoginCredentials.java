@@ -65,6 +65,7 @@ public class LoginCredentials extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         intent = new Intent(LoginCredentials.this, LoginCredentials.class);
+                        startActivity(intent);
                     }
                 });
 
