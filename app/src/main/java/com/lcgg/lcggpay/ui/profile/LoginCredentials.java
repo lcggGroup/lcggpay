@@ -25,6 +25,8 @@ public class LoginCredentials extends AppCompatActivity {
     TextView pass;
     TextView rePass;
 
+    Intent intent;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_credential);
@@ -55,8 +57,18 @@ public class LoginCredentials extends AppCompatActivity {
                 rePassEdit.setVisibility(View.VISIBLE);
                 passEdit.setVisibility(View.VISIBLE);
 
-                edit.setVisibility(View.GONE);
+                //edit.setVisibility(View.GONE);
                 save.setVisibility(View.VISIBLE);
+
+                edit.setText("Cancel");
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onBackPressed();
+                    }
+                });
+
+
             }
         });
 
