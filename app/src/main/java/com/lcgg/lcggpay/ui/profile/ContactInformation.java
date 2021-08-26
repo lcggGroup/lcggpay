@@ -70,7 +70,45 @@ public class ContactInformation extends AppCompatActivity {
                 lNameEdit.setVisibility(View.VISIBLE);
 
                 save.setVisibility(View.VISIBLE);
-                edit.setVisibility(View.GONE);
+
+                edit.setText("Cancel");
+                edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(edit.getText() == "Cancel"){
+
+                        fName.setVisibility(View.VISIBLE);
+                        mName.setVisibility(View.VISIBLE);
+                        lName.setVisibility(View.VISIBLE);
+
+                        fNameEdit.setVisibility(View.GONE);
+                        mNameEdit.setVisibility(View.GONE);
+                        lNameEdit.setVisibility(View.GONE);
+
+                        save.setVisibility(View.GONE);
+                        edit.setVisibility(View.VISIBLE);
+                        edit.setText("Edit");
+                        }
+
+                        if(edit.getText() == "Edit"){
+
+                            fName.setVisibility(View.GONE);
+                            mName.setVisibility(View.GONE);
+                            lName.setVisibility(View.GONE);
+
+                            fNameEdit.setVisibility(View.VISIBLE);
+                            mNameEdit.setVisibility(View.VISIBLE);
+                            lNameEdit.setVisibility(View.VISIBLE);
+
+                            save.setVisibility(View.VISIBLE);
+                            edit.setVisibility(View.VISIBLE);
+                            edit.setText("Cancel");
+                        }
+
+                    }
+                });
+
             }
         });
 
@@ -87,6 +125,7 @@ public class ContactInformation extends AppCompatActivity {
 
                 save.setVisibility(View.GONE);
                 edit.setVisibility(View.VISIBLE);
+                edit.setText("Edit");
             }
         });
     }
