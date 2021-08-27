@@ -2,6 +2,7 @@ package com.lcgg.lcggpay.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -93,6 +94,43 @@ public class LoginCredentials extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (TextUtils.isEmpty(passEdit.getText().toString())) {
+                    passEdit.setError("Enter your password");
+                    passEdit.setBackgroundResource(R.drawable.txt_design_box_red);
+                }
+                else if (!TextUtils.isEmpty(passEdit.getText().toString())) {
+                    passEdit.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (passEdit.getText().toString().length() < 6 ) {
+                    passEdit.setError("Minimum length is 7.");
+                    passEdit.setBackgroundResource(R.drawable.txt_design_box_red);
+                }
+                else if (passEdit.getText().toString().length() >= 6 ) {
+                    passEdit.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (TextUtils.isEmpty(rePassEdit.getText().toString())) {
+                    rePassEdit.setError("Confirm password must not be empty");
+                    rePassEdit.setBackgroundResource(R.drawable.txt_design_box_red);
+                }
+                else if (!TextUtils.isEmpty(rePassEdit.getText().toString())) {
+                    rePassEdit.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if (!passEdit.getText().toString().equals(rePassEdit.getText().toString())) {
+                    rePassEdit.setError("Your password must be the same with your confirmed password");
+                    rePassEdit.setBackgroundResource(R.drawable.txt_design_box_red);
+                }
+                else if (passEdit.getText().toString().equals(rePassEdit.getText().toString()) &&
+                        !TextUtils.isEmpty(passEdit.getText().toString()) &&
+                        !TextUtils.isEmpty(passEdit.getText().toString())) {
+                    rePassEdit.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+
+
                 save.setVisibility(View.GONE);
                 edit.setVisibility(View.VISIBLE);
                 edit.setText("Change Password");
