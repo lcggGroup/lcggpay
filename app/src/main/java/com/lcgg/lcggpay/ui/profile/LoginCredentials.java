@@ -130,15 +130,20 @@ public class LoginCredentials extends AppCompatActivity {
                 }
 
 
+                if(!TextUtils.isEmpty(passEdit.getText().toString()) &&
+                        passEdit.getText().toString().length() >= 6 &&
+                        !TextUtils.isEmpty(rePassEdit.getText().toString()) &&
+                        passEdit.getText().toString().equals(rePassEdit.getText().toString())) {
 
-                save.setVisibility(View.GONE);
-                edit.setVisibility(View.VISIBLE);
-                edit.setText("Change Password");
+                    save.setVisibility(View.GONE);
+                    edit.setVisibility(View.VISIBLE);
+                    edit.setText("Change Password");
 
-                pass.setVisibility(View.GONE);
-                rePass.setVisibility(View.GONE);
-                rePassEdit.setVisibility(View.GONE);
-                passEdit.setVisibility(View.GONE);
+                    pass.setVisibility(View.GONE);
+                    rePass.setVisibility(View.GONE);
+                    rePassEdit.setVisibility(View.GONE);
+                    passEdit.setVisibility(View.GONE);
+                }
             }
         });
     }
