@@ -45,7 +45,6 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/txt_design_box"
-                android:inputType="textEmailAddress"
                 android:padding="5dp"/>
         </LinearLayout>
 
@@ -79,7 +78,6 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/txt_design_box"
-                android:inputType="numberDecimal"
                 android:padding="5dp"/>
         </LinearLayout>
 
@@ -113,7 +111,6 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/txt_design_box"
-                android:inputType="textMultiLine"
                 android:padding="5dp"/>
         </LinearLayout>
 
