@@ -2,6 +2,7 @@ package com.lcgg.lcggpay.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -91,6 +92,13 @@ public class ContactInformation extends AppCompatActivity {
                             edit.setText("Cancel");
                         }
                         else {
+                            //Cancel
+                            fNameEdit.setText("");
+                            lNameEdit.setText("");
+                            fNameEdit.setError(null);
+                            lNameEdit.setError(null);
+                            fNameEdit.setBackgroundResource(R.drawable.txt_design_box);
+                            lNameEdit.setBackgroundResource(R.drawable.txt_design_box);
 
                             fNameEdit.setVisibility(View.GONE);
                             mNameEdit.setVisibility(View.GONE);
@@ -115,17 +123,38 @@ public class ContactInformation extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fName.setVisibility(View.VISIBLE);
-                mName.setVisibility(View.VISIBLE);
-                lName.setVisibility(View.VISIBLE);
 
-                fNameEdit.setVisibility(View.GONE);
-                mNameEdit.setVisibility(View.GONE);
-                lNameEdit.setVisibility(View.GONE);
+                if (TextUtils.isEmpty(fNameEdit.getText().toString())) {
+                    fNameEdit.setError("Enter your First Name");
+                    fNameEdit.setBackgroundResource(R.drawable.txt_design_box_red);
+                }
+                else if (!TextUtils.isEmpty(fNameEdit.getText().toString())) {
+                    fNameEdit.setBackgroundResource(R.drawable.txt_design_box);
+                }
 
-                save.setVisibility(View.GONE);
-                edit.setVisibility(View.VISIBLE);
-                edit.setText("Edit");
+                if (TextUtils.isEmpty(lNameEdit.getText().toString())) {
+                    lNameEdit.setError("Enter your First Name");
+                    lNameEdit.setBackgroundResource(R.drawable.txt_design_box_red);
+                }
+                else if (!TextUtils.isEmpty(lNameEdit.getText().toString())) {
+                    lNameEdit.setBackgroundResource(R.drawable.txt_design_box);
+                }
+
+                if(!TextUtils.isEmpty(fNameEdit.getText().toString()) &&
+                        !TextUtils.isEmpty(lNameEdit.getText().toString())) {
+
+                    fName.setVisibility(View.VISIBLE);
+                    mName.setVisibility(View.VISIBLE);
+                    lName.setVisibility(View.VISIBLE);
+
+                    fNameEdit.setVisibility(View.GONE);
+                    mNameEdit.setVisibility(View.GONE);
+                    lNameEdit.setVisibility(View.GONE);
+
+                    save.setVisibility(View.GONE);
+                    edit.setVisibility(View.VISIBLE);
+                    edit.setText("Edit");
+                }
             }
         });
     }
