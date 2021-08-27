@@ -35,8 +35,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
-                android:gravity="left|center"
-                android:text="Carlo"/>
+                android:gravity="left|center"/>
             <EditText
                 android:id="@+id/txt_contact_fn"
                 android:layout_width="match_parent"
@@ -70,8 +69,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
-                android:gravity="left|center"
-                android:text="Gardiola"/>
+                android:gravity="left|center"/>
             <EditText
                 android:id="@+id/txt_contact_mn"
                 android:layout_width="match_parent"
@@ -105,8 +103,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
-                android:gravity="left|center"
-                android:text="Gonzales"/>
+                android:gravity="left|center"/>
             <EditText
                 android:id="@+id/txt_contact_ln"
                 android:layout_width="match_parent"

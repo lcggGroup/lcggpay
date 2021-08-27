@@ -11,15 +11,28 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lcgg.lcggpay.Login;
+import com.lcgg.lcggpay.Profile;
 import com.lcgg.lcggpay.R;
+import com.lcgg.lcggpay.Wallet;
 
 import org.w3c.dom.Text;
 
 public class ContactInformation extends AppCompatActivity {
+    Profile profile;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef;
+
     Button edit;
     Button save;
 
@@ -36,6 +49,10 @@ public class ContactInformation extends AppCompatActivity {
         setContentView(R.layout.activity_contact_info);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mAuth = FirebaseAuth.getInstance();
+        myRef = database.getReference(mAuth.getUid());
+
 
         edit = findViewById(R.id.contactBtn_edit);
         save = findViewById(R.id.contactBtn_save);
@@ -58,6 +75,7 @@ public class ContactInformation extends AppCompatActivity {
 
         save.setVisibility(View.GONE);
 
+        checkUser();
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +159,8 @@ public class ContactInformation extends AppCompatActivity {
                 if(!TextUtils.isEmpty(fNameEdit.getText().toString()) &&
                         !TextUtils.isEmpty(lNameEdit.getText().toString())) {
 
+                    updateUser(fNameEdit.getText().toString(), mNameEdit.getText().toString(), lNameEdit.getText().toString());
+
                     fName.setVisibility(View.VISIBLE);
                     mName.setVisibility(View.VISIBLE);
                     lName.setVisibility(View.VISIBLE);
@@ -155,5 +175,42 @@ public class ContactInformation extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void checkUser () {
+        myRef.child("Profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                profile = snapshot.getValue(Profile.class);
+
+                fName.setText(profile.getFirstName());
+                mName.setText(profile.getMiddleName());
+                lName.setText(profile.getLastName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    public void updateUser (String firstName, String middleName, String lastName){
+        profile = new Profile (null, null, firstName, middleName, lastName);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myRef.child("Profile").setValue(profile);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 }

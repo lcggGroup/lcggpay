@@ -10,19 +10,31 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lcgg.lcggpay.Login;
+import com.lcgg.lcggpay.Profile;
 import com.lcgg.lcggpay.R;
 
 public class LoginCredentials extends AppCompatActivity {
+    Profile profile;
+    TextView email;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
     Button edit;
     Button save;
 
     EditText passEdit;
     EditText rePassEdit;
-
+    private DatabaseReference myRef;
     TextView pass;
     TextView rePass;
 
@@ -34,8 +46,14 @@ public class LoginCredentials extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mAuth = FirebaseAuth.getInstance();
+        myRef = database.getReference(mAuth.getUid());
+
         save = findViewById(R.id.loginBtn_save);
         edit = findViewById(R.id.loginBtn_pass);
+
+        //db_login_cred_email
+        email = findViewById(R.id.db_login_cred_email);
 
         pass = findViewById(R.id.txt_login_cred_pass);
         rePass = findViewById(R.id.txt_login_cred_re_pass);
@@ -48,6 +66,8 @@ public class LoginCredentials extends AppCompatActivity {
         rePass.setVisibility(View.GONE);
         rePassEdit.setVisibility(View.GONE);
         passEdit.setVisibility(View.GONE);
+
+        checkUser();
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,4 +174,22 @@ public class LoginCredentials extends AppCompatActivity {
             }
         });
     }
+
+    public void checkUser () {
+        myRef.child("Profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                profile = snapshot.getValue(Profile.class);
+
+                email.setText(profile.getUsername());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 }
