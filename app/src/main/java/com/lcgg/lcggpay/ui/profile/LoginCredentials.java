@@ -67,6 +67,11 @@ public class LoginCredentials extends AppCompatActivity {
                     public void onClick(View v) {
 
                         if(edit.getText() == "Cancel"){
+                            passEdit.setText("");
+                            rePassEdit.setText("");
+                            passEdit.setBackgroundResource(R.drawable.txt_design_box);
+                            rePassEdit.setBackgroundResource(R.drawable.txt_design_box);
+
                             edit.setText("Change Password");
                             save.setVisibility(View.GONE);
 
