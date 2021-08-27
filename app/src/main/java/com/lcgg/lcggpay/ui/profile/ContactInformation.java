@@ -1,5 +1,6 @@
 package com.lcgg.lcggpay.ui.profile;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.lcgg.lcggpay.Login;
 import com.lcgg.lcggpay.Profile;
 import com.lcgg.lcggpay.R;
+import com.lcgg.lcggpay.Register;
 import com.lcgg.lcggpay.Wallet;
 
 import org.w3c.dom.Text;
@@ -112,6 +115,7 @@ public class ContactInformation extends AppCompatActivity {
                         else {
                             //Cancel
                             fNameEdit.setText("");
+                            mNameEdit.setText("");
                             lNameEdit.setText("");
                             fNameEdit.setError(null);
                             lNameEdit.setError(null);
@@ -186,6 +190,22 @@ public class ContactInformation extends AppCompatActivity {
                 fName.setText(profile.getFirstName());
                 mName.setText(profile.getMiddleName());
                 lName.setText(profile.getLastName());
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ContactInformation.this);
+                builder.setTitle("Contact Information");
+                builder.setMessage("Successfully updated Contact Information.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // You don't have to do anything here if you just
+                        // want it dismissed when clicked
+                        fNameEdit.setText("");
+                        mNameEdit.setText("");
+                        lNameEdit.setText("");
+                    }
+                });
+                builder.create().show();
+
+
             }
 
             @Override
