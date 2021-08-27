@@ -69,6 +69,8 @@ public class LoginCredentials extends AppCompatActivity {
                         if(edit.getText() == "Cancel"){
                             passEdit.setText("");
                             rePassEdit.setText("");
+                            passEdit.setError(null);
+                            rePassEdit.setError(null);
                             passEdit.setBackgroundResource(R.drawable.txt_design_box);
                             rePassEdit.setBackgroundResource(R.drawable.txt_design_box);
 
