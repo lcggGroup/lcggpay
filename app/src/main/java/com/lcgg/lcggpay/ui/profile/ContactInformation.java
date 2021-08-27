@@ -44,7 +44,7 @@ public class ContactInformation extends AppCompatActivity {
         mName = findViewById(R.id.db_contact_mn);
         lName = findViewById(R.id.db_contact_ln);
 
-        fNameEdit = findViewById(R.id.txt_contact_ln);
+        fNameEdit = findViewById(R.id.txt_contact_fn);
         mNameEdit = findViewById(R.id.txt_contact_mn);
         lNameEdit = findViewById(R.id.txt_contact_ln);
 
@@ -112,8 +112,6 @@ public class ContactInformation extends AppCompatActivity {
                             edit.setVisibility(View.VISIBLE);
                             edit.setText("Edit");
                         }
-
-
                     }
                 });
 
@@ -133,7 +131,7 @@ public class ContactInformation extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(lNameEdit.getText().toString())) {
-                    lNameEdit.setError("Enter your First Name");
+                    lNameEdit.setError("Enter your Last Name");
                     lNameEdit.setBackgroundResource(R.drawable.txt_design_box_red);
                 }
                 else if (!TextUtils.isEmpty(lNameEdit.getText().toString())) {
