@@ -191,7 +191,6 @@ public class ContactInformation extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                myRef.child("Profile").setValue(profile);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ContactInformation.this);
                 builder.setTitle("Contact Information");
@@ -200,6 +199,8 @@ public class ContactInformation extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         // You don't have to do anything here if you just
                         // want it dismissed when clicked
+                        myRef.child("Profile").setValue(profile);
+
                         fNameEdit.setText("");
                         mNameEdit.setText("");
                         lNameEdit.setText("");
