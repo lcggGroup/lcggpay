@@ -1,8 +1,10 @@
 package com.lcgg.lcggpay.ui.profile;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,9 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +32,12 @@ import com.lcgg.lcggpay.Profile;
 import com.lcgg.lcggpay.R;
 
 public class LoginCredentials extends AppCompatActivity {
+    private static final String TAG = "Login Credentials";
     Profile profile;
     TextView email;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     Button edit;
     Button save;
@@ -162,7 +172,8 @@ public class LoginCredentials extends AppCompatActivity {
                         !TextUtils.isEmpty(rePassEdit.getText().toString()) &&
                         passEdit.getText().toString().equals(rePassEdit.getText().toString())) {
 
-                    save.setVisibility(View.GONE);
+                    updatePassword(passEdit.getText().toString());
+
                     edit.setVisibility(View.VISIBLE);
                     edit.setText("Change Password");
 
@@ -192,4 +203,31 @@ public class LoginCredentials extends AppCompatActivity {
 
     }
 
+    public void updatePassword (String password) {
+        AuthCredential credential = EmailAuthProvider.getCredential(email.getText().toString(), password);
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    alertMessage("Password updated");
+                }
+                else{
+                    alertMessage("Error password not updated");
+                }
+            }
+        });
+    }
+
+    public void alertMessage (String alertMessage) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginCredentials.this);
+        builder.setTitle("Login Credentials");
+        builder.setMessage(alertMessage);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // You don't have to do anything here if you just
+                // want it dismissed when clicked
+            }
+        });
+        builder.create().show();
+    }
 }

@@ -162,6 +162,22 @@ public class ContactInformation extends AppCompatActivity {
                         !TextUtils.isEmpty(lNameEdit.getText().toString())) {
 
                     updateUser(fNameEdit.getText().toString(), mNameEdit.getText().toString(), lNameEdit.getText().toString());
+
+                    fNameEdit.setText("");
+                    mNameEdit.setText("");
+                    lNameEdit.setText("");
+
+                    fName.setVisibility(View.VISIBLE);
+                    mName.setVisibility(View.VISIBLE);
+                    lName.setVisibility(View.VISIBLE);
+
+                    fNameEdit.setVisibility(View.GONE);
+                    mNameEdit.setVisibility(View.GONE);
+                    lNameEdit.setVisibility(View.GONE);
+
+                    save.setVisibility(View.GONE);
+                    edit.setVisibility(View.VISIBLE);
+                    edit.setText("Edit");
                 }
             }
         });
@@ -200,22 +216,6 @@ public class ContactInformation extends AppCompatActivity {
                         // You don't have to do anything here if you just
                         // want it dismissed when clicked
                         myRef.child("Profile").setValue(profile);
-
-                        fNameEdit.setText("");
-                        mNameEdit.setText("");
-                        lNameEdit.setText("");
-
-                        fName.setVisibility(View.VISIBLE);
-                        mName.setVisibility(View.VISIBLE);
-                        lName.setVisibility(View.VISIBLE);
-
-                        fNameEdit.setVisibility(View.GONE);
-                        mNameEdit.setVisibility(View.GONE);
-                        lNameEdit.setVisibility(View.GONE);
-
-                        save.setVisibility(View.GONE);
-                        edit.setVisibility(View.VISIBLE);
-                        edit.setText("Edit");
                     }
                 });
                 builder.create().show();
