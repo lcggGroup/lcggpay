@@ -190,22 +190,6 @@ public class ContactInformation extends AppCompatActivity {
                 fName.setText(profile.getFirstName());
                 mName.setText(profile.getMiddleName());
                 lName.setText(profile.getLastName());
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(ContactInformation.this);
-                builder.setTitle("Contact Information");
-                builder.setMessage("Successfully updated Contact Information.");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // You don't have to do anything here if you just
-                        // want it dismissed when clicked
-                        fNameEdit.setText("");
-                        mNameEdit.setText("");
-                        lNameEdit.setText("");
-                    }
-                });
-                builder.create().show();
-
-
             }
 
             @Override
@@ -223,6 +207,21 @@ public class ContactInformation extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 myRef.child("Profile").setValue(profile);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ContactInformation.this);
+                builder.setTitle("Contact Information");
+                builder.setMessage("Successfully updated Contact Information.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // You don't have to do anything here if you just
+                        // want it dismissed when clicked
+                        fNameEdit.setText("");
+                        mNameEdit.setText("");
+                        lNameEdit.setText("");
+                    }
+                });
+                builder.create().show();
+
             }
 
             @Override
