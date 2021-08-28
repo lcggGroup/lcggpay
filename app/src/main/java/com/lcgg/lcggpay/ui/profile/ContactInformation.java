@@ -56,7 +56,6 @@ public class ContactInformation extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         myRef = database.getReference(mAuth.getUid());
 
-
         edit = findViewById(R.id.contactBtn_edit);
         save = findViewById(R.id.contactBtn_save);
 
@@ -136,7 +135,6 @@ public class ContactInformation extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         });
 
@@ -164,18 +162,6 @@ public class ContactInformation extends AppCompatActivity {
                         !TextUtils.isEmpty(lNameEdit.getText().toString())) {
 
                     updateUser(fNameEdit.getText().toString(), mNameEdit.getText().toString(), lNameEdit.getText().toString());
-
-                    fName.setVisibility(View.VISIBLE);
-                    mName.setVisibility(View.VISIBLE);
-                    lName.setVisibility(View.VISIBLE);
-
-                    fNameEdit.setVisibility(View.GONE);
-                    mNameEdit.setVisibility(View.GONE);
-                    lNameEdit.setVisibility(View.GONE);
-
-                    save.setVisibility(View.GONE);
-                    edit.setVisibility(View.VISIBLE);
-                    edit.setText("Edit");
                 }
             }
         });
@@ -191,7 +177,6 @@ public class ContactInformation extends AppCompatActivity {
                 mName.setText(profile.getMiddleName());
                 lName.setText(profile.getLastName());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -218,10 +203,21 @@ public class ContactInformation extends AppCompatActivity {
                         fNameEdit.setText("");
                         mNameEdit.setText("");
                         lNameEdit.setText("");
+
+                        fName.setVisibility(View.VISIBLE);
+                        mName.setVisibility(View.VISIBLE);
+                        lName.setVisibility(View.VISIBLE);
+
+                        fNameEdit.setVisibility(View.GONE);
+                        mNameEdit.setVisibility(View.GONE);
+                        lNameEdit.setVisibility(View.GONE);
+
+                        save.setVisibility(View.GONE);
+                        edit.setVisibility(View.VISIBLE);
+                        edit.setText("Edit");
                     }
                 });
                 builder.create().show();
-
             }
 
             @Override
