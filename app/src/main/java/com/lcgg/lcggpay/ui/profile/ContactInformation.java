@@ -160,30 +160,13 @@ public class ContactInformation extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(fNameEdit.getText().toString()) &&
                         !TextUtils.isEmpty(lNameEdit.getText().toString())) {
-
                     updateUser(fNameEdit.getText().toString(), mNameEdit.getText().toString(), lNameEdit.getText().toString());
-
-                    fNameEdit.setText("");
-                    mNameEdit.setText("");
-                    lNameEdit.setText("");
-
-                    fName.setVisibility(View.VISIBLE);
-                    mName.setVisibility(View.VISIBLE);
-                    lName.setVisibility(View.VISIBLE);
-
-                    fNameEdit.setVisibility(View.GONE);
-                    mNameEdit.setVisibility(View.GONE);
-                    lNameEdit.setVisibility(View.GONE);
-
-                    save.setVisibility(View.GONE);
-                    edit.setVisibility(View.VISIBLE);
-                    edit.setText("Edit");
                 }
             }
         });
     }
 
-    public void checkUser () {
+    public void checkUser() {
         myRef.child("Profile").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -201,7 +184,7 @@ public class ContactInformation extends AppCompatActivity {
 
     }
 
-    public void updateUser (String firstName, String middleName, String lastName){
+    public void updateUser(String firstName, String middleName, String lastName){
         profile = new Profile (null, null, firstName, middleName, lastName);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -216,6 +199,22 @@ public class ContactInformation extends AppCompatActivity {
                         // You don't have to do anything here if you just
                         // want it dismissed when clicked
                         myRef.child("Profile").setValue(profile);
+
+                        fNameEdit.setText("");
+                        mNameEdit.setText("");
+                        lNameEdit.setText("");
+
+                        fName.setVisibility(View.VISIBLE);
+                        mName.setVisibility(View.VISIBLE);
+                        lName.setVisibility(View.VISIBLE);
+
+                        fNameEdit.setVisibility(View.GONE);
+                        mNameEdit.setVisibility(View.GONE);
+                        lNameEdit.setVisibility(View.GONE);
+
+                        save.setVisibility(View.GONE);
+                        edit.setVisibility(View.VISIBLE);
+                        edit.setText("Edit");
                     }
                 });
                 builder.create().show();

@@ -47,6 +47,8 @@ public class LoginCredentials extends AppCompatActivity {
     private DatabaseReference myRef;
     TextView pass;
     TextView rePass;
+    String currentPassword;
+    private String updatedPassword;
 
     Intent intent;
 
@@ -123,8 +125,6 @@ public class LoginCredentials extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
 
@@ -171,27 +171,18 @@ public class LoginCredentials extends AppCompatActivity {
                         passEdit.getText().toString().length() >= 6 &&
                         !TextUtils.isEmpty(rePassEdit.getText().toString()) &&
                         passEdit.getText().toString().equals(rePassEdit.getText().toString())) {
-
-                    updatePassword(passEdit.getText().toString());
-
-                    edit.setVisibility(View.VISIBLE);
-                    edit.setText("Change Password");
-
-                    pass.setVisibility(View.GONE);
-                    rePass.setVisibility(View.GONE);
-                    rePassEdit.setVisibility(View.GONE);
-                    passEdit.setVisibility(View.GONE);
+                    updatePassword(currentPassword, passEdit.getText().toString());
                 }
             }
         });
     }
 
-    public void checkUser () {
+    public void checkUser() {
         myRef.child("Profile").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 profile = snapshot.getValue(Profile.class);
-
+                currentPassword = profile.getPassword();
                 email.setText(profile.getUsername());
             }
 
@@ -203,16 +194,39 @@ public class LoginCredentials extends AppCompatActivity {
 
     }
 
-    public void updatePassword (String password) {
-        AuthCredential credential = EmailAuthProvider.getCredential(email.getText().toString(), password);
+    public void updatePassword(String oldPassword, String newPassword) {
+        updatedPassword = newPassword;
+
+        AuthCredential credential = EmailAuthProvider.getCredential(email.getText().toString(), oldPassword);
         user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
-                    alertMessage("Password updated");
+                    user.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                profile = new Profile ();
+                                profile.setPassword(updatedPassword);
+                                myRef.child("Profile").setValue(profile);
+
+                                alertMessage("Password updated");
+
+                                edit.setVisibility(View.VISIBLE);
+                                edit.setText("Change Password");
+                                pass.setVisibility(View.GONE);
+                                rePass.setVisibility(View.GONE);
+                                rePassEdit.setVisibility(View.GONE);
+                                passEdit.setVisibility(View.GONE);
+                            }
+                            else {
+                                alertMessage("Error password not updated");
+                            }
+                        }
+                    });
                 }
                 else{
-                    alertMessage("Error password not updated");
+                    alertMessage("Error auth failed");
                 }
             }
         });

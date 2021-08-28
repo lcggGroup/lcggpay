@@ -184,12 +184,7 @@ public class Register extends AppCompatActivity {
     public void writeNewUser(String username, String password, String firstName, String middleName, String lastName) {
 
         Profile profile;
-        if (middleName == "" || middleName == " " || middleName == null){
-            profile = new Profile (username, password, firstName, null, lastName);
-        }
-        else{
-            profile = new Profile (username, password, firstName, middleName, lastName);
-        }
+        profile = new Profile (username, password, firstName, middleName, lastName);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
